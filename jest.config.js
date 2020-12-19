@@ -1,3 +1,5 @@
 module.exports = {
-  setupFiles: ["./src/mocks/client.js"],
+  setupFiles: ["./test/mocks/client.js"],
+  collectCoverage: true,
+  collectCoverageFrom: ["./src/**/*.{js,jsx}"],
 };

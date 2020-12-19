@@ -7,7 +7,7 @@
   "module": "dist/index.mjs",
   "source": "src/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --colors",
     "build": "microbundle",
     "prebuild": "npm run test",
     "prepublish": "npm run build"
@@ -38,11 +38,6 @@
     "lint-staged": "^10.5.3",
     "microbundle": "^0.12.4",
     "prettier": "^2.2.1"
-  },
-  "jest": {
-    "setupFiles": [
-      "./src/mocks/client.js"
-    ]
   },
   "husky": {
     "hooks": {

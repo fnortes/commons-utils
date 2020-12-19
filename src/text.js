@@ -3,7 +3,7 @@ import json from "./json";
 
 const TYPES_CONTENT = ["string", "xml", "json"];
 
-const getPrettyText = (data = "", typeContent = TYPES_CONTENT[0]) => {
+export const getPrettyText = (data = "", typeContent = TYPES_CONTENT[0]) => {
   let result = "";
 
   switch (typeContent) {
@@ -21,7 +21,7 @@ const getPrettyText = (data = "", typeContent = TYPES_CONTENT[0]) => {
   return result;
 };
 
-const copyToClipboard = (data, typeContent = TYPES_CONTENT[0]) => {
+export const copyToClipboard = (data, typeContent = TYPES_CONTENT[0]) => {
   const textarea = document.createElement("textarea");
   const selection = document.getSelection();
   const range = document.createRange();
@@ -51,9 +51,21 @@ const copyToClipboard = (data, typeContent = TYPES_CONTENT[0]) => {
   document.body.removeChild(textarea);
 };
 
+export const ellipsis = (text = "", maxLength = 40) => {
+  try {
+    const newContent = text.substr(0, maxLength);
+
+    return newContent + (text.length > maxLength ? " ..." : "");
+  } catch (err) {
+    console.log(`'${text}' is not a string`);
+    return text;
+  }
+};
+
 const text = {
   getPrettyText,
   copyToClipboard,
+  ellipsis,
 };
 
 export default text;

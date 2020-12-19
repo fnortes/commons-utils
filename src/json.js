@@ -1,4 +1,4 @@
-const format = (data) => {
+export const format = (data) => {
   try {
     const newData = typeof data === "object" ? data : JSON.parse(data);
 

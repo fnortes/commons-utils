@@ -1,4 +1,4 @@
-const format = (xml, originalTab = null) => {
+export const format = (xml, originalTab = null) => {
   let formatted = "";
   let indent = "";
   const tab = originalTab || "\t";

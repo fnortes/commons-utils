@@ -1,4 +1,4 @@
-import json from "./json";
+import json from "../src/json";
 
 const validJson = `{"note":{"to": "Tove", "from": "Jani", "heading": "Reminder", "body": "Hello"}}`;
 

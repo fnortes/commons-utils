@@ -1,4 +1,4 @@
-import xml from "./xml";
+import xml from "../src/xml";
 
 const validXml = `<note><to>Tove</to><from>Jani</from><heading>Reminder</heading>
         <body>Hello</body></note>`;
