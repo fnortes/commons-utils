@@ -1,5 +1,12 @@
 import json from "../src/json";
-import { getPrettyText, copyToClipboard, ellipsis } from "../src/text";
+import {
+  getPrettyText,
+  copyToClipboard,
+  ellipsis,
+  decodeFromBase64,
+  encodeToBase64,
+  toCamelCase,
+} from "../src/text";
 import text from "../src/text";
 import xml from "../src/xml";
 
@@ -37,7 +44,7 @@ describe("it should exist a text.getPrettyText function", () => {
 });
 
 describe("it should exist a text.copyToClipboard function", () => {
-  document.execCommand = jest.fn().mockImplementation((text) => {});
+  document.execCommand = jest.fn().mockImplementation(() => {});
 
   it("should exist the method", () => {
     expect(copyToClipboard).not.toBeNull();
@@ -87,5 +94,64 @@ describe("it should exist a text.ellipsis function", () => {
         "Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
       )
     ).toBe("Test Test Test Test Test Test Test Test  ...");
+  });
+});
+
+describe("it should exist a text.decodeFromBase64 function", () => {
+  it("should exist the method", () => {
+    expect(decodeFromBase64).not.toBeNull();
+  });
+
+  it("should work fine with a undefined|null|empty string entry data", () => {
+    expect(decodeFromBase64()).toBe(null);
+    expect(decodeFromBase64(null)).toBe(null);
+    expect(decodeFromBase64("")).toBe(null);
+  });
+
+  it("should work fine with a not valid base64", () => {
+    console.log = jest.fn();
+
+    expect(decodeFromBase64("Prueba")).toBe(null);
+    expect(console.log).toHaveBeenCalledWith("'Prueba' is not a base64 data");
+  });
+
+  it("should work fine with a valid base64", () => {
+    expect(decodeFromBase64("VGVzdA==")).toBe("Test");
+  });
+});
+
+describe("it should exist a text.encodeToBase64 function", () => {
+  it("should exist the method", () => {
+    expect(encodeToBase64).not.toBeNull();
+  });
+
+  it("should work fine with a undefined|null|empty string entry data", () => {
+    expect(encodeToBase64()).toBe(null);
+    expect(encodeToBase64(null)).toBe(null);
+    expect(encodeToBase64("")).toBe(null);
+  });
+
+  it("should work fine with a valid string", () => {
+    expect(encodeToBase64("Test")).toBe("VGVzdA==");
+  });
+});
+
+describe("it should exist a text.toCamelCase function", () => {
+  it("should exist the method", () => {
+    expect(toCamelCase).not.toBeNull();
+  });
+
+  it("should work fine with a undefined|null|empty string entry data", () => {
+    expect(toCamelCase()).toBe(null);
+    expect(toCamelCase(null)).toBe(null);
+    expect(toCamelCase("")).toBe(null);
+    expect(toCamelCase(5)).toBe(null);
+  });
+
+  it("should work fine with a valid string", () => {
+    expect(toCamelCase("word_to_test")).toBe("wordToTest");
+    expect(toCamelCase("WORD_TO_TEST")).toBe("wordToTest");
+    expect(toCamelCase("WoRd_tO_Test")).toBe("wordToTest");
+    expect(toCamelCase("wordtotest")).toBe("wordtotest");
   });
 });

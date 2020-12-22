@@ -62,10 +62,51 @@ export const ellipsis = (text = "", maxLength = 40) => {
   }
 };
 
+export const decodeFromBase64 = (data) => {
+  if (data === undefined || data === "" || data === null) {
+    return null;
+  }
+
+  try {
+    return decodeURIComponent(escape(window.atob(data)));
+  } catch (err) {
+    console.log(`'${data}' is not a base64 data`);
+    return null;
+  }
+};
+
+export const encodeToBase64 = (data) => {
+  if (data === undefined || data === "" || data === null) {
+    return null;
+  }
+
+  return window.btoa(unescape(encodeURIComponent(data)));
+};
+
+export const toCamelCase = (str) => {
+  if (!str || typeof str.split !== "function") {
+    return null;
+  }
+
+  return str
+    .split("_")
+    .map((word, index) => {
+      if (index === 0) {
+        return word.toLowerCase();
+      }
+
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join("");
+};
+
 const text = {
   getPrettyText,
   copyToClipboard,
   ellipsis,
+  decodeFromBase64,
+  encodeToBase64,
+  toCamelCase,
 };
 
 export default text;
