@@ -1,4 +1,16 @@
-import { isTimestamp, timestampIsValid, dateToTimestamp } from "../src/date";
+import {
+  isTimestamp,
+  isTimestampValid,
+  dateToTimestamp,
+  timestampToDate,
+  timestampToLocaleDateString,
+  timestampToDay,
+  timestampToMonth,
+} from "../src/date";
+import { leftPad } from "../src/number";
+
+const currentDate = new Date();
+const timestampMilliseconds = 1608743265 * 1000;
 
 describe("it should exist a date.isTimestamp function", () => {
   it("should exist the method", () => {
@@ -9,32 +21,42 @@ describe("it should exist a date.isTimestamp function", () => {
     expect(isTimestamp()).toBe(false);
     expect(isTimestamp(null)).toBe(false);
     expect(isTimestamp("")).toBe(false);
-    expect(isTimestamp({ test: 1 })).toBe(false);
+    expect(
+      isTimestamp({
+        test: 1,
+      })
+    ).toBe(false);
     expect(isTimestamp(2)).toBe(false);
     expect(isTimestamp(-2)).toBe(false);
   });
 
   it("should return true", () => {
     expect(isTimestamp(new Date().getTime())).toBe(true);
+    expect(isTimestamp(timestampMilliseconds)).toBe(true);
   });
 });
 
-describe("it should exist a date.timestampIsValid function", () => {
+describe("it should exist a date.isTimestampValid function", () => {
   it("should exist the method", () => {
-    expect(timestampIsValid).not.toBeNull();
+    expect(isTimestampValid).not.toBeNull();
   });
 
   it("should return false", () => {
-    expect(timestampIsValid()).toBe(false);
-    expect(timestampIsValid(null)).toBe(false);
-    expect(timestampIsValid("")).toBe(false);
-    expect(timestampIsValid({ test: 1 })).toBe(false);
-    expect(timestampIsValid(2)).toBe(false);
-    expect(timestampIsValid(-2)).toBe(false);
+    expect(isTimestampValid()).toBe(false);
+    expect(isTimestampValid(null)).toBe(false);
+    expect(isTimestampValid("")).toBe(false);
+    expect(
+      isTimestampValid({
+        test: 1,
+      })
+    ).toBe(false);
+    expect(isTimestampValid(2)).toBe(false);
+    expect(isTimestampValid(-2)).toBe(false);
   });
 
   it("should return true", () => {
-    expect(timestampIsValid(new Date().getTime())).toBe(true);
+    expect(isTimestampValid(new Date().getTime())).toBe(true);
+    expect(isTimestampValid(timestampMilliseconds)).toBe(true);
   });
 });
 
@@ -48,100 +70,126 @@ describe("it should exist a date.dateToTimestamp function", () => {
     expect(dateToTimestamp(null)).toBe(null);
     expect(dateToTimestamp("")).toBe(null);
     expect(dateToTimestamp(2)).toBe(null);
-    expect(dateToTimestamp({ test: 1 })).toBe(null);
+    expect(
+      dateToTimestamp({
+        test: 1,
+      })
+    ).toBe(null);
   });
 
   it("should return a valid timestamp", () => {
-    const dateTest = new Date();
-    expect(dateToTimestamp(dateTest)).toBe(Date.parse(dateTest));
+    expect(dateToTimestamp(currentDate)).toBe(Date.parse(currentDate));
   });
 });
 
-// describe("it should exist a text.ellipsis function", () => {
-//   it("should exist the method", () => {
-//     expect(ellipsis).not.toBeNull();
-//   });
+describe("it should exist a date.timestampToDate function", () => {
+  it("should exist the method", () => {
+    expect(timestampToDate).not.toBeNull();
+  });
 
-//   it("should work fine with a undefined entry data", () => {
-//     expect(ellipsis()).toBe("");
-//   });
+  it("should return a null", () => {
+    expect(timestampToDate()).toBe(null);
+    expect(timestampToDate(null)).toBe(null);
+    expect(timestampToDate("")).toBe(null);
+    expect(
+      timestampToDate({
+        test: 1,
+      })
+    ).toBe(null);
+    expect(timestampToDate(2)).toBe(null);
+    expect(timestampToDate(-2)).toBe(null);
+  });
 
-//   it("should work fine with a null entry data", () => {
-//     console.log = jest.fn();
+  it("should return a valid date", () => {
+    expect(timestampToDate(currentDate.getTime())).toStrictEqual(currentDate);
+    expect(timestampToDate(timestampMilliseconds)).toStrictEqual(
+      new Date(timestampMilliseconds)
+    );
+  });
+});
 
-//     expect(ellipsis(null)).toBe(null);
-//     expect(console.log).toHaveBeenCalledWith("'null' is not a string");
-//   });
+describe("it should exist a date.timestampToLocaleDateString function", () => {
+  it("should exist the method", () => {
+    expect(timestampToLocaleDateString).not.toBeNull();
+  });
 
-//   it("should work fine with a valid string", () => {
-//     expect(ellipsis("")).toBe("");
-//     expect(ellipsis("", 20)).toBe("");
-//     expect(ellipsis("Test")).toBe("Test");
-//     expect(ellipsis("Test", 10)).toBe("Test");
-//     expect(ellipsis("Test", 3)).toBe("Tes ...");
-//     expect(
-//       ellipsis(
-//         "Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
-//       )
-//     ).toBe("Test Test Test Test Test Test Test Test  ...");
-//   });
-// });
+  it("should return a null", () => {
+    expect(timestampToLocaleDateString()).toBe(null);
+    expect(timestampToLocaleDateString(null)).toBe(null);
+    expect(timestampToLocaleDateString("")).toBe(null);
+    expect(
+      timestampToLocaleDateString({
+        test: 1,
+      })
+    ).toBe(null);
+    expect(timestampToLocaleDateString(2)).toBe(null);
+    expect(timestampToLocaleDateString(-2)).toBe(null);
+  });
 
-// describe("it should exist a text.decodeFromBase64 function", () => {
-//   it("should exist the method", () => {
-//     expect(decodeFromBase64).not.toBeNull();
-//   });
+  it("should return a valid date string", () => {
+    expect(timestampToLocaleDateString(currentDate.getTime())).toBe(
+      currentDate.toLocaleDateString()
+    );
+    expect(timestampToLocaleDateString(timestampMilliseconds)).toBe(
+      new Date(timestampMilliseconds).toLocaleDateString()
+    );
+  });
+});
 
-//   it("should work fine with a undefined|null|empty string entry data", () => {
-//     expect(decodeFromBase64()).toBe(null);
-//     expect(decodeFromBase64(null)).toBe(null);
-//     expect(decodeFromBase64("")).toBe(null);
-//   });
+describe("it should exist a date.timestampToDay function", () => {
+  it("should exist the method", () => {
+    expect(timestampToDay).not.toBeNull();
+  });
 
-//   it("should work fine with a not valid base64", () => {
-//     console.log = jest.fn();
+  it("should return a null", () => {
+    expect(timestampToDay()).toBe(null);
+    expect(timestampToDay(null)).toBe(null);
+    expect(timestampToDay("")).toBe(null);
+    expect(
+      timestampToDay({
+        test: 1,
+      })
+    ).toBe(null);
+    expect(timestampToDay(2)).toBe(null);
+    expect(timestampToDay(-2)).toBe(null);
+  });
 
-//     expect(decodeFromBase64("Prueba")).toBe(null);
-//     expect(console.log).toHaveBeenCalledWith("'Prueba' is not a base64 data");
-//   });
+  it("should return a valid day", () => {
+    expect(timestampToDay(currentDate.getTime())).toBe(currentDate.getDate());
+    expect(timestampToDay(currentDate.getTime(), true)).toBe(
+      leftPad(currentDate.getDate())
+    );
+    expect(timestampToDay(timestampMilliseconds)).toBe(
+      new Date(timestampMilliseconds).getDate()
+    );
+    expect(timestampToDay(timestampMilliseconds, true)).toBe(
+      leftPad(new Date(timestampMilliseconds).getDate())
+    );
+  });
+});
 
-//   it("should work fine with a valid base64", () => {
-//     expect(decodeFromBase64("VGVzdA==")).toBe("Test");
-//   });
-// });
+describe("it should exist a date.timestampToMonth function", () => {
+  it("should exist the method", () => {
+    expect(timestampToMonth).not.toBeNull();
+  });
 
-// describe("it should exist a text.encodeToBase64 function", () => {
-//   it("should exist the method", () => {
-//     expect(encodeToBase64).not.toBeNull();
-//   });
+  it("should return a null", () => {
+    expect(timestampToMonth()).toBe(null);
+    expect(timestampToMonth(null)).toBe(null);
+    expect(timestampToMonth("")).toBe(null);
+    expect(
+      timestampToMonth({
+        test: 1,
+      })
+    ).toBe(null);
+    expect(timestampToMonth(2)).toBe(null);
+    expect(timestampToMonth(-2)).toBe(null);
+  });
 
-//   it("should work fine with a undefined|null|empty string entry data", () => {
-//     expect(encodeToBase64()).toBe(null);
-//     expect(encodeToBase64(null)).toBe(null);
-//     expect(encodeToBase64("")).toBe(null);
-//   });
-
-//   it("should work fine with a valid string", () => {
-//     expect(encodeToBase64("Test")).toBe("VGVzdA==");
-//   });
-// });
-
-// describe("it should exist a text.toCamelCase function", () => {
-//   it("should exist the method", () => {
-//     expect(toCamelCase).not.toBeNull();
-//   });
-
-//   it("should work fine with a undefined|null|empty string entry data", () => {
-//     expect(toCamelCase()).toBe(null);
-//     expect(toCamelCase(null)).toBe(null);
-//     expect(toCamelCase("")).toBe(null);
-//     expect(toCamelCase(5)).toBe(null);
-//   });
-
-//   it("should work fine with a valid string", () => {
-//     expect(toCamelCase("word_to_test")).toBe("wordToTest");
-//     expect(toCamelCase("WORD_TO_TEST")).toBe("wordToTest");
-//     expect(toCamelCase("WoRd_tO_Test")).toBe("wordToTest");
-//     expect(toCamelCase("wordtotest")).toBe("wordtotest");
-//   });
-// });
+  it("should return a valid month", () => {
+    expect(timestampToMonth(timestampMilliseconds)).toBe(12);
+    expect(timestampToMonth(timestampMilliseconds, true)).toBe("12");
+    expect(timestampToMonth(1590340065 * 1000)).toBe(5);
+    expect(timestampToMonth(1590340065 * 1000, true)).toBe("05");
+  });
+});
