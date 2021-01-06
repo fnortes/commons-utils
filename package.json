@@ -41,7 +41,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test && lint-staged"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
@@ -61,5 +61,8 @@
     "index.js.flow",
     "package.json",
     "README.md"
-  ]
+  ],
+  "dependencies": {
+    "moment": "^2.29.1"
+  }
 }

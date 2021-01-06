@@ -1,9 +1,5 @@
-import text2 from "./text";
-import xml from "./xml";
-import json from "./json";
+import date from "./date/index";
 
 export default {
-  text2,
-  xml,
-  json,
+  date,
 };

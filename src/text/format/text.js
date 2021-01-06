@@ -1,5 +1,5 @@
-import xml from "./xml";
-import json from "./json";
+import xml from "../../file/xml";
+import json from "../../file/json";
 
 const TYPES_CONTENT = ["string", "xml", "json"];
 
