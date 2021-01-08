@@ -1,6 +1,6 @@
 {
   "name": "@fnortes/commons-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "General commons utils",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
