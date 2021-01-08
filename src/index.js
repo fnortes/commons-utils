@@ -1,5 +1,5 @@
-import date from "./date/index";
+import common from "./date/format/common";
 
 export default {
-  date,
+  common,
 };

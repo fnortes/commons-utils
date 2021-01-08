@@ -1,4 +1,3 @@
-import moment from "moment";
 import date from "./date";
 import string from "./string";
 import timestamp from "./timestamp";
