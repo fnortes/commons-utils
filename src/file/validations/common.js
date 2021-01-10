@@ -10,9 +10,9 @@ import { isNotEmpty } from "../../text/validations/text";
 export const isValidJson = (jsonValue) => {
   switch (typeof jsonValue) {
     case "string":
-      return stringValidations.isValidJson(jsonValue);
+      return stringValidations.stringIsValidJson(jsonValue);
     case "object":
-      return jsonValidations.isValid(jsonValue);
+      return jsonValidations.jsonIsValid(jsonValue);
     default:
       return false;
   }

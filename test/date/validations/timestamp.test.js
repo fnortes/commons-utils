@@ -1,49 +1,52 @@
-import { isCorrect, isValid } from "../../../src/date/validations/timestamp";
+import {
+  timestampIsCorrect,
+  timestampIsValid,
+} from "../../../src/date/validations/timestamp";
 
-describe("it should exist a isCorrect function", () => {
+describe("it should exist a timestampIsCorrect function", () => {
   it("should exist the method", () => {
-    expect(isCorrect).not.toBeNull();
+    expect(timestampIsCorrect).not.toBeNull();
   });
 
   it("should return false", () => {
-    expect(isCorrect()).toBe(false);
-    expect(isCorrect(null)).toBe(false);
-    expect(isCorrect("")).toBe(false);
+    expect(timestampIsCorrect()).toBe(false);
+    expect(timestampIsCorrect(null)).toBe(false);
+    expect(timestampIsCorrect("")).toBe(false);
     expect(
-      isCorrect({
+      timestampIsCorrect({
         test: 1,
       })
     ).toBe(false);
-    expect(isCorrect(2)).toBe(false);
-    expect(isCorrect(-2)).toBe(false);
-    expect(isCorrect(new Date())).toBe(false);
+    expect(timestampIsCorrect(2)).toBe(false);
+    expect(timestampIsCorrect(-2)).toBe(false);
+    expect(timestampIsCorrect(new Date())).toBe(false);
   });
 
   it("should return true", () => {
-    expect(isCorrect(new Date().getTime())).toBe(true);
+    expect(timestampIsCorrect(new Date().getTime())).toBe(true);
   });
 });
 
-describe("it should exist a isValid function", () => {
+describe("it should exist a timestampIsValid function", () => {
   it("should exist the method", () => {
-    expect(isValid).not.toBeNull();
+    expect(timestampIsValid).not.toBeNull();
   });
 
   it("should return false", () => {
-    expect(isValid()).toBe(false);
-    expect(isValid(null)).toBe(false);
-    expect(isValid("")).toBe(false);
+    expect(timestampIsValid()).toBe(false);
+    expect(timestampIsValid(null)).toBe(false);
+    expect(timestampIsValid("")).toBe(false);
     expect(
-      isValid({
+      timestampIsValid({
         test: 1,
       })
     ).toBe(false);
-    expect(isValid(2)).toBe(false);
-    expect(isValid(-2)).toBe(false);
-    expect(isValid(new Date())).toBe(false);
+    expect(timestampIsValid(2)).toBe(false);
+    expect(timestampIsValid(-2)).toBe(false);
+    expect(timestampIsValid(new Date())).toBe(false);
   });
 
   it("should return true", () => {
-    expect(isValid(new Date().getTime())).toBe(true);
+    expect(timestampIsValid(new Date().getTime())).toBe(true);
   });
 });

@@ -7,7 +7,7 @@ import { isNotEmpty } from "../../text/validations/text";
  * @param {String} mask Is the mask or pattern to be used when validating the date. More information in https://momentjs.com/docs/#/displaying/
  * @return {Boolean} True if the date is valid. Else false.
  */
-export const isValidDate = (dateToValidate, mask) =>
+export const stringIsValidAsDate = (dateToValidate, mask) =>
   typeof dateToValidate === "string" &&
   typeof mask === "string" &&
   isNotEmpty(dateToValidate) &&
@@ -15,7 +15,7 @@ export const isValidDate = (dateToValidate, mask) =>
   moment(dateToValidate, mask).isValid();
 
 const string = {
-  isValidDate,
+  stringIsValidAsDate,
 };
 
 export default string;

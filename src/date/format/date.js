@@ -7,8 +7,8 @@ import { leftPad } from "../../text/format/text";
  * @param {Date} dateToConvert Is the date from which to obtain the timestamp.
  * @return {Number} Is the timestamp value or null if the date is not valid.
  */
-export const toTimestamp = (dateToConvert) =>
-  dateValidations.isValid(dateToConvert)
+export const dateToTimestamp = (dateToConvert) =>
+  dateValidations.dateIsValid(dateToConvert)
     ? parseFloat(moment(dateToConvert).format("x"))
     : null;
 
@@ -17,8 +17,10 @@ export const toTimestamp = (dateToConvert) =>
  * @param {Date} dateToConvert Is the Date object from which to obtain the full year number.
  * @return {Number} Is the full year number obtained.
  */
-export const toFullYear = (dateToConvert) =>
-  dateValidations.isValid(dateToConvert) ? dateToConvert.getFullYear() : null;
+export const dateToFullYear = (dateToConvert) =>
+  dateValidations.dateIsValid(dateToConvert)
+    ? dateToConvert.getFullYear()
+    : null;
 
 /**
  * Get the month number from a Date object.
@@ -26,8 +28,8 @@ export const toFullYear = (dateToConvert) =>
  * @param {Boolean} prefixZero False by default. If it is true, the returned month number is prefixed by zero if necessary.
  * @return {Number|String} Is the month number obtained (as string if it is prefixed).
  */
-export const toMonth = (dateToConvert, prefixZero = false) => {
-  if (dateValidations.isValid(dateToConvert)) {
+export const dateToMonth = (dateToConvert, prefixZero = false) => {
+  if (dateValidations.dateIsValid(dateToConvert)) {
     const month = dateToConvert.getMonth() + 1;
 
     return prefixZero ? leftPad(month) : month;
@@ -42,8 +44,8 @@ export const toMonth = (dateToConvert, prefixZero = false) => {
  * @param {Boolean} prefixZero False by default. If it is true, the returned day number is prefixed by zero if necessary.
  * @return {Number|String} Is the day number obtained (as string if it is prefixed).
  */
-export const toDay = (dateToConvert, prefixZero = false) => {
-  if (dateValidations.isValid(dateToConvert)) {
+export const dateToDay = (dateToConvert, prefixZero = false) => {
+  if (dateValidations.dateIsValid(dateToConvert)) {
     const day = dateToConvert.getDate();
 
     return prefixZero ? leftPad(day) : day;
@@ -58,8 +60,8 @@ export const toDay = (dateToConvert, prefixZero = false) => {
  * @param {Boolean} prefixZero False by default. If it is true, the returned hours number is prefixed by zero if necessary.
  * @return {Number|String} Is the hours number obtained (as string if it is prefixed).
  */
-export const toHours = (dateToConvert, prefixZero = false) => {
-  if (dateValidations.isValid(dateToConvert)) {
+export const dateToHours = (dateToConvert, prefixZero = false) => {
+  if (dateValidations.dateIsValid(dateToConvert)) {
     const hours = dateToConvert.getHours();
 
     return prefixZero ? leftPad(hours) : hours;
@@ -74,8 +76,8 @@ export const toHours = (dateToConvert, prefixZero = false) => {
  * @param {Boolean} prefixZero False by default. If it is true, the returned minutes number is prefixed by zero if necessary.
  * @return {Number|String} Is the minutes number obtained (as string if it is prefixed).
  */
-export const toMinutes = (dateToConvert, prefixZero = false) => {
-  if (dateValidations.isValid(dateToConvert)) {
+export const dateToMinutes = (dateToConvert, prefixZero = false) => {
+  if (dateValidations.dateIsValid(dateToConvert)) {
     const minutes = dateToConvert.getMinutes();
 
     return prefixZero ? leftPad(minutes) : minutes;
@@ -90,8 +92,8 @@ export const toMinutes = (dateToConvert, prefixZero = false) => {
  * @param {Boolean} prefixZero False by default. If it is true, the returned seconds number is prefixed by zero if necessary.
  * @return {Number|String} Is the seconds number obtained (as string if it is prefixed).
  */
-export const toSeconds = (dateToConvert, prefixZero = false) => {
-  if (dateValidations.isValid(dateToConvert)) {
+export const dateToSeconds = (dateToConvert, prefixZero = false) => {
+  if (dateValidations.dateIsValid(dateToConvert)) {
     const seconds = dateToConvert.getSeconds();
 
     return prefixZero ? leftPad(seconds) : seconds;
@@ -107,8 +109,8 @@ export const toSeconds = (dateToConvert, prefixZero = false) => {
  * @param {Boolean} utc False by default. If it is true, convert local time to UTC time.
  * @return {String} The string of formatted date.
  */
-export const toFormat = (dateToConvert, mask = null, utc = false) => {
-  if (dateValidations.isValid(dateToConvert)) {
+export const dateToFormat = (dateToConvert, mask = null, utc = false) => {
+  if (dateValidations.dateIsValid(dateToConvert)) {
     let dateObject = moment(dateToConvert);
 
     if (utc) {
@@ -122,14 +124,14 @@ export const toFormat = (dateToConvert, mask = null, utc = false) => {
 };
 
 const date = {
-  toTimestamp,
-  toFullYear,
-  toMonth,
-  toDay,
-  toHours,
-  toMinutes,
-  toSeconds,
-  toFormat,
+  dateToTimestamp,
+  dateToFullYear,
+  dateToMonth,
+  dateToDay,
+  dateToHours,
+  dateToMinutes,
+  dateToSeconds,
+  dateToFormat,
 };
 
 export default date;

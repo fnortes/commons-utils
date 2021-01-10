@@ -6,8 +6,8 @@ import dateFormats from "./date";
  * @param {Number} timestampValue Is the timestamp value from which to obtain the Date object.
  * @returns {Date} Is the Date object obtained or null if the timestamp is not valid.
  */
-export const toDate = (timestampValue) =>
-  timestampValidations.isCorrect(timestampValue)
+export const timestampToDate = (timestampValue) =>
+  timestampValidations.timestampIsCorrect(timestampValue)
     ? new Date(timestampValue)
     : null;
 
@@ -16,8 +16,8 @@ export const toDate = (timestampValue) =>
  * @param {Number} timestampValue Is the timestamp value from which to obtain the string date representation.
  * @return {String} Is the client language sensitive representation of the date or null if the timestamp is not valid.
  */
-export const toLocaleDateString = (timestampValue) => {
-  const dateConverted = timestamp.toDate(timestampValue);
+export const timestampToLocaleDateString = (timestampValue) => {
+  const dateConverted = timestamp.timestampToDate(timestampValue);
 
   return dateConverted != null ? dateConverted.toLocaleDateString() : null;
 };
@@ -27,10 +27,10 @@ export const toLocaleDateString = (timestampValue) => {
  * @param {Number} timestampValue Is the timestamp value from which to obtain the full year number.
  * @return {Number} Is the full year number obtained.
  */
-export const toFullYear = (timestampValue) => {
-  const dateToConvert = timestamp.toDate(timestampValue);
+export const timestampToFullYear = (timestampValue) => {
+  const dateToConvert = timestamp.timestampToDate(timestampValue);
 
-  return dateFormats.toFullYear(dateToConvert);
+  return dateFormats.dateToFullYear(dateToConvert);
 };
 
 /**
@@ -39,10 +39,10 @@ export const toFullYear = (timestampValue) => {
  * @param {Boolean} prefixZero False by default. If it is true, the returned month number is prefixed by zero if necessary.
  * @return {Number|String} Is the month number obtained (as string if it is prefixed).
  */
-export const toMonth = (timestampValue, prefixZero = false) => {
-  const dateToConvert = timestamp.toDate(timestampValue);
+export const timestampToMonth = (timestampValue, prefixZero = false) => {
+  const dateToConvert = timestamp.timestampToDate(timestampValue);
 
-  return dateFormats.toMonth(dateToConvert, prefixZero);
+  return dateFormats.dateToMonth(dateToConvert, prefixZero);
 };
 
 /**
@@ -51,10 +51,10 @@ export const toMonth = (timestampValue, prefixZero = false) => {
  * @param {Boolean} prefixZero False by default. If it is true, the returned day number is prefixed by zero if necessary.
  * @return {Number|String} Is the day number obtained (as string if it is prefixed).
  */
-export const toDay = (timestampValue, prefixZero = false) => {
-  const dateToConvert = timestamp.toDate(timestampValue);
+export const timestampToDay = (timestampValue, prefixZero = false) => {
+  const dateToConvert = timestamp.timestampToDate(timestampValue);
 
-  return dateFormats.toDay(dateToConvert, prefixZero);
+  return dateFormats.dateToDay(dateToConvert, prefixZero);
 };
 
 /**
@@ -63,10 +63,10 @@ export const toDay = (timestampValue, prefixZero = false) => {
  * @param {Boolean} prefixZero False by default. If it is true, the returned hours number is prefixed by zero if necessary.
  * @return {Number|String} Is the hours number obtained (as string if it is prefixed).
  */
-export const toHours = (timestampValue, prefixZero = false) => {
-  const dateToConvert = timestamp.toDate(timestampValue);
+export const timestampToHours = (timestampValue, prefixZero = false) => {
+  const dateToConvert = timestamp.timestampToDate(timestampValue);
 
-  return dateFormats.toHours(dateToConvert, prefixZero);
+  return dateFormats.dateToHours(dateToConvert, prefixZero);
 };
 
 /**
@@ -75,10 +75,10 @@ export const toHours = (timestampValue, prefixZero = false) => {
  * @param {Boolean} prefixZero False by default. If it is true, the returned minutes number is prefixed by zero if necessary.
  * @return {Number|String} Is the minutes number obtained (as string if it is prefixed).
  */
-export const toMinutes = (timestampValue, prefixZero = false) => {
-  const dateToConvert = timestamp.toDate(timestampValue);
+export const timestampToMinutes = (timestampValue, prefixZero = false) => {
+  const dateToConvert = timestamp.timestampToDate(timestampValue);
 
-  return dateFormats.toMinutes(dateToConvert, prefixZero);
+  return dateFormats.dateToMinutes(dateToConvert, prefixZero);
 };
 
 /**
@@ -87,10 +87,10 @@ export const toMinutes = (timestampValue, prefixZero = false) => {
  * @param {Boolean} prefixZero False by default. If it is true, the returned seconds number is prefixed by zero if necessary.
  * @return {Number|String} Is the seconds number obtained (as string if it is prefixed).
  */
-export const toSeconds = (timestampValue, prefixZero = false) => {
-  const dateToConvert = timestamp.toDate(timestampValue);
+export const timestampToSeconds = (timestampValue, prefixZero = false) => {
+  const dateToConvert = timestamp.timestampToDate(timestampValue);
 
-  return dateFormats.toSeconds(dateToConvert, prefixZero);
+  return dateFormats.dateToSeconds(dateToConvert, prefixZero);
 };
 
 /**
@@ -100,22 +100,22 @@ export const toSeconds = (timestampValue, prefixZero = false) => {
  * @param {Boolean} utc False by default. If it is true, convert local time to UTC time.
  * @return {String} The string of formatted date.
  */
-export const toFormat = (timestampValue, mask = null, utc = false) => {
-  const dateToConvert = timestamp.toDate(timestampValue);
+export const timestampToFormat = (timestampValue, mask = null, utc = false) => {
+  const dateToConvert = timestamp.timestampToDate(timestampValue);
 
-  return dateFormats.toFormat(dateToConvert, mask, utc);
+  return dateFormats.dateToFormat(dateToConvert, mask, utc);
 };
 
 const timestamp = {
-  toDate,
-  toLocaleDateString,
-  toFullYear,
-  toMonth,
-  toDay,
-  toHours,
-  toMinutes,
-  toSeconds,
-  toFormat,
+  timestampToDate,
+  timestampToLocaleDateString,
+  timestampToFullYear,
+  timestampToMonth,
+  timestampToDay,
+  timestampToHours,
+  timestampToMinutes,
+  timestampToSeconds,
+  timestampToFormat,
 };
 
 export default timestamp;

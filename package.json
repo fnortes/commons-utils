@@ -1,14 +1,14 @@
 {
   "name": "@fnortes/commons-utils",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "General commons utils",
-  "main": "dist/index.js",
-  "umd:main": "dist/index.umd.js",
-  "module": "dist/index.mjs",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.module.js",
+  "exports": "./dist/index.modern.js",
   "source": "src/index.js",
   "scripts": {
     "test": "jest --colors",
-    "build": "microbundle",
+    "build": "microbundle --compress false",
     "prebuild": "npm run test",
     "prepublish": "npm run build"
   },

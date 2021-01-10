@@ -9,19 +9,19 @@ import timestamp from "./timestamp";
  *                      If the dateToValidate param is a String, it is the mask or pattern to be used when validating the date. More information in https://momentjs.com/docs/#/displaying/
  * @return {Boolean} True if the date is valid. Else false.
  */
-export const isValid = (dateToValidate, mask = null) => {
+export const isValidAsDate = (dateToValidate, mask = null) => {
   switch (typeof dateToValidate) {
     case "string":
-      return string.isValidDate(dateToValidate, mask);
+      return string.stringIsValidAsDate(dateToValidate, mask);
     case "number":
-      return timestamp.isValid(dateToValidate);
+      return timestamp.timestampIsValid(dateToValidate);
     default:
-      return date.isValid(dateToValidate);
+      return date.dateIsValid(dateToValidate);
   }
 };
 
 const common = {
-  isValid,
+  isValidAsDate,
 };
 
 export default common;

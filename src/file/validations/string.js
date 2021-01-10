@@ -5,7 +5,7 @@ import { isNotEmpty } from "../../text/validations/text";
  * @param {String} jsonString Is the string object to validate.
  * @return {Boolean} True if the jsonString is valid. Else false.
  */
-export const isValidJson = (jsonString) => {
+export const stringIsValidJson = (jsonString) => {
   if (isNotEmpty(jsonString) && typeof jsonString === "string") {
     try {
       return isNotEmpty(JSON.parse(jsonString));
@@ -18,7 +18,7 @@ export const isValidJson = (jsonString) => {
 };
 
 const string = {
-  isValidJson,
+  stringIsValidJson,
 };
 
 export default string;

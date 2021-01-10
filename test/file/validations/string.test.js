@@ -1,30 +1,30 @@
-import { isValidJson } from "../../../src/file/validations/string";
+import { stringIsValidJson } from "../../../src/file/validations/string";
 
-const validJson = `{"note":{"to": "Tove", "from": "Jani", "heading": "Reminder", "body": "Hello"}}`;
+const validJson = `{"note":{"to": "Tov", "from": "Jain", "heading": "Reminder", "body": "Hello"}}`;
 
-describe("it should exist a isValidJson function", () => {
+describe("it should exist a stringIsValidJson function", () => {
   it("should exist the method", () => {
-    expect(isValidJson).not.toBeNull();
+    expect(stringIsValidJson).not.toBeNull();
   });
 
   it("should return false", () => {
-    expect(isValidJson()).toBe(false);
-    expect(isValidJson(null)).toBe(false);
-    expect(isValidJson("")).toBe(false);
-    expect(isValidJson("test")).toBe(false);
-    expect(isValidJson(2)).toBe(false);
-    expect(isValidJson(-2)).toBe(false);
-    expect(isValidJson({})).toBe(false);
+    expect(stringIsValidJson()).toBe(false);
+    expect(stringIsValidJson(null)).toBe(false);
+    expect(stringIsValidJson("")).toBe(false);
+    expect(stringIsValidJson("test")).toBe(false);
+    expect(stringIsValidJson(2)).toBe(false);
+    expect(stringIsValidJson(-2)).toBe(false);
+    expect(stringIsValidJson({})).toBe(false);
     expect(
-      isValidJson({
+      stringIsValidJson({
         test: "test",
       })
     ).toBe(false);
-    expect(isValidJson(new Date())).toBe(false);
+    expect(stringIsValidJson(new Date())).toBe(false);
   });
 
   it("should return true", () => {
-    expect(isValidJson("{}")).toBe(true);
-    expect(isValidJson(validJson)).toBe(true);
+    expect(stringIsValidJson("{}")).toBe(true);
+    expect(stringIsValidJson(validJson)).toBe(true);
   });
 });

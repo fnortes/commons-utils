@@ -1,7 +1,7 @@
 import stringFormats from "./string";
 import timestampFormats from "./timestamp";
 import dateFormats from "./date";
-import { isValid } from "../validations/date";
+import { dateIsValid } from "../validations/date";
 
 /**
  * Get the Date object from a date value (String or timestamp Number).
@@ -13,9 +13,9 @@ import { isValid } from "../validations/date";
 export const toDate = (dateValue, mask = null) => {
   switch (typeof dateValue) {
     case "string":
-      return stringFormats.toDate(dateValue, mask);
+      return stringFormats.stringToDate(dateValue, mask);
     case "number":
-      return timestampFormats.toDate(dateValue);
+      return timestampFormats.timestampToDate(dateValue);
     default:
       return null;
   }
@@ -31,11 +31,11 @@ export const toDate = (dateValue, mask = null) => {
 export const toLocaleDateString = (dateValue, mask = null) => {
   switch (typeof dateValue) {
     case "string":
-      return stringFormats.toLocaleDateString(dateValue, mask);
+      return stringFormats.stringToLocaleDateString(dateValue, mask);
     case "number":
-      return timestampFormats.toLocaleDateString(dateValue);
+      return timestampFormats.timestampToLocaleDateString(dateValue);
     case "object":
-      return isValid(dateValue) ? dateValue.toLocaleDateString() : null;
+      return dateIsValid(dateValue) ? dateValue.toLocaleDateString() : null;
     default:
       return null;
   }
@@ -51,11 +51,11 @@ export const toLocaleDateString = (dateValue, mask = null) => {
 export const toFullYear = (dateValue, mask = null) => {
   switch (typeof dateValue) {
     case "string":
-      return stringFormats.toFullYear(dateValue, mask);
+      return stringFormats.stringToFullYear(dateValue, mask);
     case "number":
-      return timestampFormats.toFullYear(dateValue);
+      return timestampFormats.timestampToFullYear(dateValue);
     case "object":
-      return dateFormats.toFullYear(dateValue);
+      return dateFormats.dateToFullYear(dateValue);
     default:
       return null;
   }
@@ -72,11 +72,11 @@ export const toFullYear = (dateValue, mask = null) => {
 export const toMonth = (dateValue, prefixZero = false, mask = null) => {
   switch (typeof dateValue) {
     case "string":
-      return stringFormats.toMonth(dateValue, mask, prefixZero);
+      return stringFormats.stringToMonth(dateValue, mask, prefixZero);
     case "number":
-      return timestampFormats.toMonth(dateValue, prefixZero);
+      return timestampFormats.timestampToMonth(dateValue, prefixZero);
     case "object":
-      return dateFormats.toMonth(dateValue, prefixZero);
+      return dateFormats.dateToMonth(dateValue, prefixZero);
     default:
       return null;
   }
@@ -93,11 +93,11 @@ export const toMonth = (dateValue, prefixZero = false, mask = null) => {
 export const toDay = (dateValue, prefixZero = false, mask = null) => {
   switch (typeof dateValue) {
     case "string":
-      return stringFormats.toDay(dateValue, mask, prefixZero);
+      return stringFormats.stringToDay(dateValue, mask, prefixZero);
     case "number":
-      return timestampFormats.toDay(dateValue, prefixZero);
+      return timestampFormats.timestampToDay(dateValue, prefixZero);
     case "object":
-      return dateFormats.toDay(dateValue, prefixZero);
+      return dateFormats.dateToDay(dateValue, prefixZero);
     default:
       return null;
   }
@@ -114,11 +114,11 @@ export const toDay = (dateValue, prefixZero = false, mask = null) => {
 export const toHours = (dateValue, prefixZero = false, mask = null) => {
   switch (typeof dateValue) {
     case "string":
-      return stringFormats.toHours(dateValue, mask, prefixZero);
+      return stringFormats.stringToHours(dateValue, mask, prefixZero);
     case "number":
-      return timestampFormats.toHours(dateValue, prefixZero);
+      return timestampFormats.timestampToHours(dateValue, prefixZero);
     case "object":
-      return dateFormats.toHours(dateValue, prefixZero);
+      return dateFormats.dateToHours(dateValue, prefixZero);
     default:
       return null;
   }
@@ -135,11 +135,11 @@ export const toHours = (dateValue, prefixZero = false, mask = null) => {
 export const toMinutes = (dateValue, prefixZero = false, mask = null) => {
   switch (typeof dateValue) {
     case "string":
-      return stringFormats.toMinutes(dateValue, mask, prefixZero);
+      return stringFormats.stringToMinutes(dateValue, mask, prefixZero);
     case "number":
-      return timestampFormats.toMinutes(dateValue, prefixZero);
+      return timestampFormats.timestampToMinutes(dateValue, prefixZero);
     case "object":
-      return dateFormats.toMinutes(dateValue, prefixZero);
+      return dateFormats.dateToMinutes(dateValue, prefixZero);
     default:
       return null;
   }
@@ -156,11 +156,11 @@ export const toMinutes = (dateValue, prefixZero = false, mask = null) => {
 export const toSeconds = (dateValue, prefixZero = false, mask = null) => {
   switch (typeof dateValue) {
     case "string":
-      return stringFormats.toSeconds(dateValue, mask, prefixZero);
+      return stringFormats.stringToSeconds(dateValue, mask, prefixZero);
     case "number":
-      return timestampFormats.toSeconds(dateValue, prefixZero);
+      return timestampFormats.timestampToSeconds(dateValue, prefixZero);
     case "object":
-      return dateFormats.toSeconds(dateValue, prefixZero);
+      return dateFormats.dateToSeconds(dateValue, prefixZero);
     default:
       return null;
   }
@@ -183,11 +183,11 @@ export const toFormat = (
 ) => {
   switch (typeof dateValue) {
     case "string":
-      return stringFormats.toFormat(dateValue, mask, maskToConvert, utc);
+      return stringFormats.stringToFormat(dateValue, mask, maskToConvert, utc);
     case "number":
-      return timestampFormats.toFormat(dateValue, maskToConvert, utc);
+      return timestampFormats.timestampToFormat(dateValue, maskToConvert, utc);
     case "object":
-      return dateFormats.toFormat(dateValue, maskToConvert, utc);
+      return dateFormats.dateToFormat(dateValue, maskToConvert, utc);
     default:
       return null;
   }

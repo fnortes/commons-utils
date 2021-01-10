@@ -77,11 +77,11 @@ describe("it should exist a pretty function", () => {
   });
 
   it("should return a valid XML", () => {
-    expect(pretty(validXml, "xml")).toBe(xml.pretty(validXml));
+    expect(pretty(validXml, "xml")).toBe(xml.xmlPretty(validXml));
   });
 
   it("should return a valid JSON", () => {
-    expect(pretty(validJson, "json")).toBe(json.pretty(validJson));
+    expect(pretty(validJson, "json")).toBe(json.jsonPretty(validJson));
   });
 });
 

@@ -5,7 +5,7 @@ import commonValidations from "../validations/common";
  * @param {String|Object} data Is the entry data to format.
  * @return {String} Is the pretty formatted string.
  */
-export const pretty = (data) => {
+export const jsonPretty = (data) => {
   if (commonValidations.isValidJson(data)) {
     const newData = typeof data === "object" ? data : JSON.parse(data);
 
@@ -16,7 +16,7 @@ export const pretty = (data) => {
 };
 
 const json = {
-  pretty,
+  jsonPretty,
 };
 
 export default json;

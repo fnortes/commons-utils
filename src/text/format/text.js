@@ -39,10 +39,10 @@ export const pretty = (data = "", typeContent = TYPES_CONTENT[0]) => {
 
   switch (typeContent) {
     case TYPES_CONTENT[1]:
-      result = xml.pretty(data);
+      result = xml.xmlPretty(data);
       break;
     case TYPES_CONTENT[2]:
-      result = json.pretty(data);
+      result = json.jsonPretty(data);
       break;
     default:
       result = data;

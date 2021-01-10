@@ -5,11 +5,11 @@ import moment from "moment";
  * @param {Date} dateToValidate Is the date to validate.
  * @return {Boolean} True if the date is valid. Else false.
  */
-export const isValid = (dateToValidate) =>
+export const dateIsValid = (dateToValidate) =>
   dateToValidate instanceof Date && moment(dateToValidate).isValid();
 
 const date = {
-  isValid,
+  dateIsValid,
 };
 
 export default date;

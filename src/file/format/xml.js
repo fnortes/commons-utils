@@ -6,7 +6,7 @@ import commonValidations from "../validations/common";
  * @param {String} originalTab Is the string to use for the indentation, by default it is the tab.
  * @return {String} Is the pretty formatted string.
  */
-export const pretty = (data, originalTab = "\t") => {
+export const xmlPretty = (data, originalTab = "\t") => {
   if (commonValidations.isValidXml(data)) {
     let formatted = "";
     let indent = "";
@@ -29,7 +29,7 @@ export const pretty = (data, originalTab = "\t") => {
 };
 
 const xml = {
-  pretty,
+  xmlPretty,
 };
 
 export default xml;

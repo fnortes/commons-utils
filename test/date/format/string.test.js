@@ -1,383 +1,492 @@
 import {
-  toDate,
-  toLocaleDateString,
-  toFullYear,
-  toMonth,
-  toDay,
-  toHours,
-  toMinutes,
-  toSeconds,
-  toFormat,
+  stringToDate,
+  stringToLocaleDateString,
+  stringToFullYear,
+  stringToMonth,
+  stringToDay,
+  stringToHours,
+  stringToMinutes,
+  stringToSeconds,
+  stringToFormat,
 } from "../../../src/date/format/string";
 
 // Test Date: 2020-12-23 / 18:07:45
 const timestampMilliseconds = 1608743265 * 1000;
 
-describe("it should exist a toDate function", () => {
+describe("it should exist a stringToDate function", () => {
   it("should exist the method", () => {
-    expect(toDate).not.toBeNull();
+    expect(stringToDate).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toDate()).toBe(null);
-    expect(toDate(null)).toBe(null);
-    expect(toDate("")).toBe(null);
+    expect(stringToDate()).toBe(null);
+    expect(stringToDate(null)).toBe(null);
+    expect(stringToDate("")).toBe(null);
     expect(
-      toDate({
+      stringToDate({
         test: 1,
       })
     ).toBe(null);
-    expect(toDate(2)).toBe(null);
-    expect(toDate(-2)).toBe(null);
-    expect(toDate("test")).toBe(null);
-    expect(toDate("test", "YYYY MM DD")).toBe(null);
-    expect(toDate("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toDate("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toDate("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toDate("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toDate("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(null);
+    expect(stringToDate(2)).toBe(null);
+    expect(stringToDate(-2)).toBe(null);
+    expect(stringToDate("test")).toBe(null);
+    expect(stringToDate("test", "YYYY MM DD")).toBe(null);
+    expect(stringToDate("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToDate("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToDate("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToDate("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToDate("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
   });
 
   it("should return a valid date", () => {
     expect(
-      toDate("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z").getTime()
+      stringToDate(
+        "23/12/2020 17:07:45 +0000",
+        "DD/MM/YYYY HH:mm:ss Z"
+      ).getTime()
     ).toBe(timestampMilliseconds);
   });
 });
 
-describe("it should exist a toLocaleDateString function", () => {
+describe("it should exist a stringToLocaleDateString function", () => {
   it("should exist the method", () => {
-    expect(toLocaleDateString).not.toBeNull();
+    expect(stringToLocaleDateString).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toLocaleDateString()).toBe(null);
-    expect(toLocaleDateString(null)).toBe(null);
-    expect(toLocaleDateString("")).toBe(null);
+    expect(stringToLocaleDateString()).toBe(null);
+    expect(stringToLocaleDateString(null)).toBe(null);
+    expect(stringToLocaleDateString("")).toBe(null);
     expect(
-      toLocaleDateString({
+      stringToLocaleDateString({
         test: 1,
       })
     ).toBe(null);
-    expect(toLocaleDateString(2)).toBe(null);
-    expect(toLocaleDateString(-2)).toBe(null);
-    expect(toLocaleDateString("test")).toBe(null);
-    expect(toLocaleDateString("test", "YYYY MM DD")).toBe(null);
+    expect(stringToLocaleDateString(2)).toBe(null);
+    expect(stringToLocaleDateString(-2)).toBe(null);
+    expect(stringToLocaleDateString("test")).toBe(null);
+    expect(stringToLocaleDateString("test", "YYYY MM DD")).toBe(null);
     expect(
-      toLocaleDateString("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")
+      stringToLocaleDateString("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")
     ).toBe(null);
     expect(
-      toLocaleDateString("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")
+      stringToLocaleDateString("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")
     ).toBe(null);
     expect(
-      toLocaleDateString("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")
+      stringToLocaleDateString("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")
     ).toBe(null);
     expect(
-      toLocaleDateString("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")
+      stringToLocaleDateString("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")
     ).toBe(null);
     expect(
-      toLocaleDateString("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")
+      stringToLocaleDateString("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")
     ).toBe(null);
   });
 
   it("should return a valid date string", () => {
     expect(
-      toLocaleDateString("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
+      stringToLocaleDateString(
+        "23/12/2020 17:07:45 +0000",
+        "DD/MM/YYYY HH:mm:ss Z"
+      )
     ).toBe("2020-12-23");
   });
 });
 
-describe("it should exist a toFullYear function", () => {
+describe("it should exist a stringToFullYear function", () => {
   it("should exist the method", () => {
-    expect(toFullYear).not.toBeNull();
+    expect(stringToFullYear).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toFullYear()).toBe(null);
-    expect(toFullYear(null)).toBe(null);
-    expect(toFullYear("")).toBe(null);
+    expect(stringToFullYear()).toBe(null);
+    expect(stringToFullYear(null)).toBe(null);
+    expect(stringToFullYear("")).toBe(null);
     expect(
-      toFullYear({
+      stringToFullYear({
         test: 1,
       })
     ).toBe(null);
-    expect(toFullYear(2)).toBe(null);
-    expect(toFullYear(-2)).toBe(null);
-    expect(toFullYear("test")).toBe(null);
-    expect(toFullYear("test", "YYYY MM DD")).toBe(null);
-    expect(toFullYear("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toFullYear("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toFullYear("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toFullYear("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toFullYear("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(null);
+    expect(stringToFullYear(2)).toBe(null);
+    expect(stringToFullYear(-2)).toBe(null);
+    expect(stringToFullYear("test")).toBe(null);
+    expect(stringToFullYear("test", "YYYY MM DD")).toBe(null);
+    expect(stringToFullYear("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToFullYear("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToFullYear("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToFullYear("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToFullYear("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
   });
 
   it("should return a valid year", () => {
     expect(
-      toFullYear("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
+      stringToFullYear("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
     ).toBe(2020);
   });
 });
 
-describe("it should exist a toMonth function", () => {
+describe("it should exist a stringToMonth function", () => {
   it("should exist the method", () => {
-    expect(toMonth).not.toBeNull();
+    expect(stringToMonth).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toMonth()).toBe(null);
-    expect(toMonth(null)).toBe(null);
-    expect(toMonth("")).toBe(null);
+    expect(stringToMonth()).toBe(null);
+    expect(stringToMonth(null)).toBe(null);
+    expect(stringToMonth("")).toBe(null);
     expect(
-      toMonth({
+      stringToMonth({
         test: 1,
       })
     ).toBe(null);
-    expect(toMonth(2)).toBe(null);
-    expect(toMonth(-2)).toBe(null);
-    expect(toMonth("test")).toBe(null);
-    expect(toMonth("test", "YYYY MM DD")).toBe(null);
-    expect(toMonth("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toMonth("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toMonth("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toMonth("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toMonth("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(null);
+    expect(stringToMonth(2)).toBe(null);
+    expect(stringToMonth(-2)).toBe(null);
+    expect(stringToMonth("test")).toBe(null);
+    expect(stringToMonth("test", "YYYY MM DD")).toBe(null);
+    expect(stringToMonth("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToMonth("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToMonth("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToMonth("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToMonth("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
   });
 
   it("should return a valid month", () => {
-    expect(toMonth("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")).toBe(
-      12
-    );
     expect(
-      toMonth("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
+      stringToMonth("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
+    ).toBe(12);
+    expect(
+      stringToMonth("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
     ).toBe("12");
-    expect(toMonth("23/01/2021 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")).toBe(
-      1
-    );
     expect(
-      toMonth("23/01/2021 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
+      stringToMonth("23/01/2021 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
+    ).toBe(1);
+    expect(
+      stringToMonth("23/01/2021 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
     ).toBe("01");
   });
 });
 
-describe("it should exist a toDay function", () => {
+describe("it should exist a stringToDay function", () => {
   it("should exist the method", () => {
-    expect(toDay).not.toBeNull();
+    expect(stringToDay).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toDay()).toBe(null);
-    expect(toDay(null)).toBe(null);
-    expect(toDay("")).toBe(null);
+    expect(stringToDay()).toBe(null);
+    expect(stringToDay(null)).toBe(null);
+    expect(stringToDay("")).toBe(null);
     expect(
-      toDay({
+      stringToDay({
         test: 1,
       })
     ).toBe(null);
-    expect(toDay(2)).toBe(null);
-    expect(toDay(-2)).toBe(null);
-    expect(toDay("test")).toBe(null);
-    expect(toDay("test", "YYYY MM DD")).toBe(null);
-    expect(toDay("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toDay("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toDay("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toDay("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toDay("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(null);
+    expect(stringToDay(2)).toBe(null);
+    expect(stringToDay(-2)).toBe(null);
+    expect(stringToDay("test")).toBe(null);
+    expect(stringToDay("test", "YYYY MM DD")).toBe(null);
+    expect(stringToDay("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToDay("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToDay("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToDay("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToDay("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
   });
 
   it("should return a valid day", () => {
-    expect(toDay("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")).toBe(
-      23
-    );
     expect(
-      toDay("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
+      stringToDay("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
+    ).toBe(23);
+    expect(
+      stringToDay("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
     ).toBe("23");
 
-    expect(toDay("01/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")).toBe(1);
     expect(
-      toDay("01/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
+      stringToDay("01/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
+    ).toBe(1);
+    expect(
+      stringToDay("01/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
     ).toBe("01");
   });
 });
 
-describe("it should exist a toHours function", () => {
+describe("it should exist a stringToHours function", () => {
   it("should exist the method", () => {
-    expect(toHours).not.toBeNull();
+    expect(stringToHours).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toHours()).toBe(null);
-    expect(toHours(null)).toBe(null);
-    expect(toHours("")).toBe(null);
+    expect(stringToHours()).toBe(null);
+    expect(stringToHours(null)).toBe(null);
+    expect(stringToHours("")).toBe(null);
     expect(
-      toHours({
+      stringToHours({
         test: 1,
       })
     ).toBe(null);
-    expect(toHours(2)).toBe(null);
-    expect(toHours(-2)).toBe(null);
-    expect(toHours("test")).toBe(null);
-    expect(toHours("test", "YYYY MM DD")).toBe(null);
-    expect(toHours("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toHours("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toHours("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toHours("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toHours("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(null);
+    expect(stringToHours(2)).toBe(null);
+    expect(stringToHours(-2)).toBe(null);
+    expect(stringToHours("test")).toBe(null);
+    expect(stringToHours("test", "YYYY MM DD")).toBe(null);
+    expect(stringToHours("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToHours("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToHours("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToHours("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToHours("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
   });
 
   it("should return a valid hours", () => {
-    expect(toHours("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")).toBe(
-      18
-    );
     expect(
-      toHours("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
+      stringToHours("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
+    ).toBe(18);
+    expect(
+      stringToHours("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
     ).toBe("18");
 
-    expect(toHours("23/12/2020 09:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")).toBe(
-      10
-    );
     expect(
-      toHours("23/12/2020 09:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
+      stringToHours("23/12/2020 09:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
+    ).toBe(10);
+    expect(
+      stringToHours("23/12/2020 09:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
     ).toBe("10");
   });
 });
 
-describe("it should exist a toMinutes function", () => {
+describe("it should exist a stringToMinutes function", () => {
   it("should exist the method", () => {
-    expect(toMinutes).not.toBeNull();
+    expect(stringToMinutes).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toMinutes()).toBe(null);
-    expect(toMinutes(null)).toBe(null);
-    expect(toMinutes("")).toBe(null);
+    expect(stringToMinutes()).toBe(null);
+    expect(stringToMinutes(null)).toBe(null);
+    expect(stringToMinutes("")).toBe(null);
     expect(
-      toMinutes({
+      stringToMinutes({
         test: 1,
       })
     ).toBe(null);
-    expect(toMinutes(2)).toBe(null);
-    expect(toMinutes(-2)).toBe(null);
-    expect(toMinutes("test")).toBe(null);
-    expect(toMinutes("test", "YYYY MM DD")).toBe(null);
-    expect(toMinutes("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toMinutes("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toMinutes("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toMinutes("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toMinutes("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(null);
+    expect(stringToMinutes(2)).toBe(null);
+    expect(stringToMinutes(-2)).toBe(null);
+    expect(stringToMinutes("test")).toBe(null);
+    expect(stringToMinutes("test", "YYYY MM DD")).toBe(null);
+    expect(stringToMinutes("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToMinutes("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToMinutes("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToMinutes("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToMinutes("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
   });
 
   it("should return a valid hours", () => {
     expect(
-      toMinutes("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
+      stringToMinutes("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
     ).toBe(7);
     expect(
-      toMinutes("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
+      stringToMinutes(
+        "23/12/2020 17:07:45 +0000",
+        "DD/MM/YYYY HH:mm:ss Z",
+        true
+      )
     ).toBe("07");
 
     expect(
-      toMinutes("23/12/2020 17:05:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
+      stringToMinutes("23/12/2020 17:05:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
     ).toBe(5);
     expect(
-      toMinutes("23/12/2020 17:05:45 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
+      stringToMinutes(
+        "23/12/2020 17:05:45 +0000",
+        "DD/MM/YYYY HH:mm:ss Z",
+        true
+      )
     ).toBe("05");
   });
 });
 
-describe("it should exist a toSeconds function", () => {
+describe("it should exist a stringToSeconds function", () => {
   it("should exist the method", () => {
-    expect(toSeconds).not.toBeNull();
+    expect(stringToSeconds).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toSeconds()).toBe(null);
-    expect(toSeconds(null)).toBe(null);
-    expect(toSeconds("")).toBe(null);
+    expect(stringToSeconds()).toBe(null);
+    expect(stringToSeconds(null)).toBe(null);
+    expect(stringToSeconds("")).toBe(null);
     expect(
-      toSeconds({
+      stringToSeconds({
         test: 1,
       })
     ).toBe(null);
-    expect(toSeconds(2)).toBe(null);
-    expect(toSeconds(-2)).toBe(null);
-    expect(toSeconds("test")).toBe(null);
-    expect(toSeconds("test", "YYYY MM DD")).toBe(null);
-    expect(toSeconds("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toSeconds("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toSeconds("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toSeconds("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toSeconds("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(null);
+    expect(stringToSeconds(2)).toBe(null);
+    expect(stringToSeconds(-2)).toBe(null);
+    expect(stringToSeconds("test")).toBe(null);
+    expect(stringToSeconds("test", "YYYY MM DD")).toBe(null);
+    expect(stringToSeconds("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToSeconds("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToSeconds("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToSeconds("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToSeconds("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
   });
 
   it("should return a valid hours", () => {
     expect(
-      toSeconds("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
+      stringToSeconds("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
     ).toBe(45);
     expect(
-      toSeconds("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
+      stringToSeconds(
+        "23/12/2020 17:07:45 +0000",
+        "DD/MM/YYYY HH:mm:ss Z",
+        true
+      )
     ).toBe("45");
 
     expect(
-      toSeconds("23/12/2020 17:07:09 +0000", "DD/MM/YYYY HH:mm:ss Z")
+      stringToSeconds("23/12/2020 17:07:09 +0000", "DD/MM/YYYY HH:mm:ss Z")
     ).toBe(9);
     expect(
-      toSeconds("23/12/2020 17:07:09 +0000", "DD/MM/YYYY HH:mm:ss Z", true)
+      stringToSeconds(
+        "23/12/2020 17:07:09 +0000",
+        "DD/MM/YYYY HH:mm:ss Z",
+        true
+      )
     ).toBe("09");
   });
 });
 
-describe("it should exist a toFormat function", () => {
+describe("it should exist a stringToFormat function", () => {
   it("should exist the method", () => {
-    expect(toFormat).not.toBeNull();
+    expect(stringToFormat).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toFormat()).toBe(null);
-    expect(toFormat(null)).toBe(null);
-    expect(toFormat("")).toBe(null);
+    expect(stringToFormat()).toBe(null);
+    expect(stringToFormat(null)).toBe(null);
+    expect(stringToFormat("")).toBe(null);
     expect(
-      toFormat({
+      stringToFormat({
         test: 1,
       })
     ).toBe(null);
-    expect(toFormat(2)).toBe(null);
-    expect(toFormat(-2)).toBe(null);
-    expect(toFormat("test")).toBe(null);
-    expect(toFormat("test", "YYYY MM DD")).toBe(null);
-    expect(toFormat("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toFormat("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toFormat("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toFormat("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(null);
-    expect(toFormat("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(null);
+    expect(stringToFormat(2)).toBe(null);
+    expect(stringToFormat(-2)).toBe(null);
+    expect(stringToFormat("test")).toBe(null);
+    expect(stringToFormat("test", "YYYY MM DD")).toBe(null);
+    expect(stringToFormat("15/13/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToFormat("32/07/1983 20:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToFormat("15/07/1983 26:45:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToFormat("15/07/1983 20:61:13", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
+    expect(stringToFormat("15/07/1983 20:45:61", "DD/MM/YYYY HH:mm:ss")).toBe(
+      null
+    );
   });
 
   it("should return a valid formatted date", () => {
-    expect(toFormat("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")).toBe(
-      "2020-12-23T18:07:45+01:00"
-    );
     expect(
-      toFormat(
+      stringToFormat("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z")
+    ).toBe("2020-12-23T18:07:45+01:00");
+    expect(
+      stringToFormat(
         "23/12/2020 17:07:45 +0000",
         "DD/MM/YYYY HH:mm:ss Z",
         "yyyy-MM-DDTHH:mm:ssZ"
       )
     ).toBe("2020-12-23T18:07:45+01:00");
     expect(
-      toFormat(
+      stringToFormat(
         "23/12/2020 17:07:45 +0000",
         "DD/MM/YYYY HH:mm:ss Z",
         "ddd MMM DD yyyy HH:mm:ss"
       )
     ).toBe("Wed Dec 23 2020 18:07:45");
     expect(
-      toFormat(
+      stringToFormat(
         "23/12/2020 17:07:45 +0000",
         "DD/MM/YYYY HH:mm:ss Z",
         "DD/MM/yyyy"
       )
     ).toBe("23/12/2020");
     expect(
-      toFormat("23/12/2020 17:07:45 +0000", "DD/MM/YYYY HH:mm:ss Z", null, true)
+      stringToFormat(
+        "23/12/2020 17:07:45 +0000",
+        "DD/MM/YYYY HH:mm:ss Z",
+        null,
+        true
+      )
     ).toBe("2020-12-23T17:07:45Z");
   });
 });

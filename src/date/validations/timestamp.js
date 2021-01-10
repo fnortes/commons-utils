@@ -5,7 +5,7 @@ import moment from "moment";
  * @param {Number} value Is the timestamp value to check.
  * @return {Boolean} True if the timestamp has a valid format. Else false.
  */
-export const isCorrect = (value) => {
+export const timestampIsCorrect = (value) => {
   const parsed = parseFloat(value);
 
   return (
@@ -20,12 +20,12 @@ export const isCorrect = (value) => {
  * @param {Number} value Is the timestamp value to check.
  * @return {Boolean} True if the timestamp has a valid date. Else false.
  */
-export const isValid = (value) =>
-  timestamp.isCorrect(value) && moment(value).isValid();
+export const timestampIsValid = (value) =>
+  timestamp.timestampIsCorrect(value) && moment(value).isValid();
 
 const timestamp = {
-  isCorrect,
-  isValid,
+  timestampIsCorrect,
+  timestampIsValid,
 };
 
 export default timestamp;

@@ -1,25 +1,25 @@
-import { isValid } from "../../../src/file/validations/json";
+import { jsonIsValid } from "../../../src/file/validations/json";
 
-describe("it should exist a isValid function", () => {
+describe("it should exist a jsonIsValid function", () => {
   it("should exist the method", () => {
-    expect(isValid).not.toBeNull();
+    expect(jsonIsValid).not.toBeNull();
   });
 
   it("should return false", () => {
-    expect(isValid()).toBe(false);
-    expect(isValid(null)).toBe(false);
-    expect(isValid("")).toBe(false);
-    expect(isValid(2)).toBe(false);
-    expect(isValid(-2)).toBe(false);
+    expect(jsonIsValid()).toBe(false);
+    expect(jsonIsValid(null)).toBe(false);
+    expect(jsonIsValid("")).toBe(false);
+    expect(jsonIsValid(2)).toBe(false);
+    expect(jsonIsValid(-2)).toBe(false);
   });
 
   it("should return true", () => {
-    expect(isValid({})).toBe(true);
+    expect(jsonIsValid({})).toBe(true);
     expect(
-      isValid({
+      jsonIsValid({
         test: "test",
       })
     ).toBe(true);
-    expect(isValid(new Date())).toBe(true);
+    expect(jsonIsValid(new Date())).toBe(true);
   });
 });

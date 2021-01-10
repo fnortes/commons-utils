@@ -8,8 +8,8 @@ import dateFormats from "./date";
  * @param {String} mask Is the mask or pattern to be used when convert the date. More information in https://momentjs.com/docs/#/displaying/
  * @returns {Date} Is the Date object obtained or null if the string date is not valid.
  */
-export const toDate = (dateStringValue, mask) =>
-  stringValidations.isValidDate(dateStringValue, mask)
+export const stringToDate = (dateStringValue, mask) =>
+  stringValidations.stringIsValidAsDate(dateStringValue, mask)
     ? moment(dateStringValue, mask).toDate()
     : null;
 
@@ -19,8 +19,8 @@ export const toDate = (dateStringValue, mask) =>
  * @param {String} mask Is the mask or pattern to be used when convert the date. More information in https://momentjs.com/docs/#/displaying/
  * @return {String} Is the client language sensitive representation of the date or null if the string date value is not valid.
  */
-export const toLocaleDateString = (dateStringValue, mask) => {
-  const dateConverted = string.toDate(dateStringValue, mask);
+export const stringToLocaleDateString = (dateStringValue, mask) => {
+  const dateConverted = string.stringToDate(dateStringValue, mask);
 
   return dateConverted != null ? dateConverted.toLocaleDateString() : null;
 };
@@ -31,10 +31,10 @@ export const toLocaleDateString = (dateStringValue, mask) => {
  * @param {String} mask Is the mask or pattern to be used when convert the date. More information in https://momentjs.com/docs/#/displaying/
  * @return {Number} Is the full year number obtained.
  */
-export const toFullYear = (dateStringValue, mask) => {
-  const dateToConvert = string.toDate(dateStringValue, mask);
+export const stringToFullYear = (dateStringValue, mask) => {
+  const dateToConvert = string.stringToDate(dateStringValue, mask);
 
-  return dateFormats.toFullYear(dateToConvert);
+  return dateFormats.dateToFullYear(dateToConvert);
 };
 
 /**
@@ -44,10 +44,10 @@ export const toFullYear = (dateStringValue, mask) => {
  * @param {Boolean} prefixZero False by default. If it is true, the returned month number is prefixed by zero if necessary.
  * @return {Number|String} Is the month number obtained (as string if it is prefixed).
  */
-export const toMonth = (dateStringValue, mask, prefixZero = false) => {
-  const dateToConvert = string.toDate(dateStringValue, mask);
+export const stringToMonth = (dateStringValue, mask, prefixZero = false) => {
+  const dateToConvert = string.stringToDate(dateStringValue, mask);
 
-  return dateFormats.toMonth(dateToConvert, prefixZero);
+  return dateFormats.dateToMonth(dateToConvert, prefixZero);
 };
 
 /**
@@ -57,10 +57,10 @@ export const toMonth = (dateStringValue, mask, prefixZero = false) => {
  * @param {Boolean} prefixZero False by default. If it is true, the returned day number is prefixed by zero if necessary.
  * @return {Number|String} Is the day number obtained (as string if it is prefixed).
  */
-export const toDay = (dateStringValue, mask, prefixZero = false) => {
-  const dateToConvert = string.toDate(dateStringValue, mask);
+export const stringToDay = (dateStringValue, mask, prefixZero = false) => {
+  const dateToConvert = string.stringToDate(dateStringValue, mask);
 
-  return dateFormats.toDay(dateToConvert, prefixZero);
+  return dateFormats.dateToDay(dateToConvert, prefixZero);
 };
 
 /**
@@ -70,10 +70,10 @@ export const toDay = (dateStringValue, mask, prefixZero = false) => {
  * @param {Boolean} prefixZero False by default. If it is true, the returned hours number is prefixed by zero if necessary.
  * @return {Number|String} Is the hours number obtained (as string if it is prefixed).
  */
-export const toHours = (dateStringValue, mask, prefixZero = false) => {
-  const dateToConvert = string.toDate(dateStringValue, mask);
+export const stringToHours = (dateStringValue, mask, prefixZero = false) => {
+  const dateToConvert = string.stringToDate(dateStringValue, mask);
 
-  return dateFormats.toHours(dateToConvert, prefixZero);
+  return dateFormats.dateToHours(dateToConvert, prefixZero);
 };
 
 /**
@@ -83,10 +83,10 @@ export const toHours = (dateStringValue, mask, prefixZero = false) => {
  * @param {Boolean} prefixZero False by default. If it is true, the returned minutes number is prefixed by zero if necessary.
  * @return {Number|String} Is the minutes number obtained (as string if it is prefixed).
  */
-export const toMinutes = (dateStringValue, mask, prefixZero = false) => {
-  const dateToConvert = string.toDate(dateStringValue, mask);
+export const stringToMinutes = (dateStringValue, mask, prefixZero = false) => {
+  const dateToConvert = string.stringToDate(dateStringValue, mask);
 
-  return dateFormats.toMinutes(dateToConvert, prefixZero);
+  return dateFormats.dateToMinutes(dateToConvert, prefixZero);
 };
 
 /**
@@ -96,10 +96,10 @@ export const toMinutes = (dateStringValue, mask, prefixZero = false) => {
  * @param {Boolean} prefixZero False by default. If it is true, the returned seconds number is prefixed by zero if necessary.
  * @return {Number|String} Is the seconds number obtained (as string if it is prefixed).
  */
-export const toSeconds = (dateStringValue, mask, prefixZero = false) => {
-  const dateToConvert = string.toDate(dateStringValue, mask);
+export const stringToSeconds = (dateStringValue, mask, prefixZero = false) => {
+  const dateToConvert = string.stringToDate(dateStringValue, mask);
 
-  return dateFormats.toSeconds(dateToConvert, prefixZero);
+  return dateFormats.dateToSeconds(dateToConvert, prefixZero);
 };
 
 /**
@@ -110,27 +110,27 @@ export const toSeconds = (dateStringValue, mask, prefixZero = false) => {
  * @param {Boolean} utc False by default. If it is true, convert local time to UTC time.
  * @return {String} The string of formatted date.
  */
-export const toFormat = (
+export const stringToFormat = (
   dateStringValue,
   mask,
   maskToConvert = null,
   utc = false
 ) => {
-  const dateToConvert = string.toDate(dateStringValue, mask);
+  const dateToConvert = string.stringToDate(dateStringValue, mask);
 
-  return dateFormats.toFormat(dateToConvert, maskToConvert, utc);
+  return dateFormats.dateToFormat(dateToConvert, maskToConvert, utc);
 };
 
 const string = {
-  toDate,
-  toLocaleDateString,
-  toFullYear,
-  toMonth,
-  toDay,
-  toHours,
-  toMinutes,
-  toSeconds,
-  toFormat,
+  stringToDate,
+  stringToLocaleDateString,
+  stringToFullYear,
+  stringToMonth,
+  stringToDay,
+  stringToHours,
+  stringToMinutes,
+  stringToSeconds,
+  stringToFormat,
 };
 
 export default string;

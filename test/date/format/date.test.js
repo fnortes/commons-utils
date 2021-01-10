@@ -1,12 +1,12 @@
 import {
-  toTimestamp,
-  toFullYear,
-  toMonth,
-  toDay,
-  toHours,
-  toMinutes,
-  toSeconds,
-  toFormat,
+  dateToTimestamp,
+  dateToFullYear,
+  dateToMonth,
+  dateToDay,
+  dateToHours,
+  dateToMinutes,
+  dateToSeconds,
+  dateToFormat,
 } from "../../../src/date/format/date";
 
 // Test Date: 2020-12-23 / 18:07:45
@@ -16,213 +16,213 @@ const testDate = new Date(timestampMilliseconds);
 const timestampMilliseconds2 = 1614585909 * 1000;
 const testDate2 = new Date(timestampMilliseconds2);
 
-describe("it should exist a toTimestamp function", () => {
+describe("it should exist a dateToTimestamp function", () => {
   it("should exist the method", () => {
-    expect(toTimestamp).not.toBeNull();
+    expect(dateToTimestamp).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toTimestamp()).toBe(null);
-    expect(toTimestamp(null)).toBe(null);
-    expect(toTimestamp("")).toBe(null);
-    expect(toTimestamp(2)).toBe(null);
+    expect(dateToTimestamp()).toBe(null);
+    expect(dateToTimestamp(null)).toBe(null);
+    expect(dateToTimestamp("")).toBe(null);
+    expect(dateToTimestamp(2)).toBe(null);
     expect(
-      toTimestamp({
+      dateToTimestamp({
         test: 1,
       })
     ).toBe(null);
   });
 
   it("should return a valid timestamp", () => {
-    expect(toTimestamp(testDate)).toBe(timestampMilliseconds);
+    expect(dateToTimestamp(testDate)).toBe(timestampMilliseconds);
   });
 });
 
-describe("it should exist a toFullYear function", () => {
+describe("it should exist a dateToFullYear function", () => {
   it("should exist the method", () => {
-    expect(toFullYear).not.toBeNull();
+    expect(dateToFullYear).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toFullYear()).toBe(null);
-    expect(toFullYear(null)).toBe(null);
-    expect(toFullYear("")).toBe(null);
+    expect(dateToFullYear()).toBe(null);
+    expect(dateToFullYear(null)).toBe(null);
+    expect(dateToFullYear("")).toBe(null);
     expect(
-      toFullYear({
+      dateToFullYear({
         test: 1,
       })
     ).toBe(null);
-    expect(toFullYear(2)).toBe(null);
-    expect(toFullYear(-2)).toBe(null);
+    expect(dateToFullYear(2)).toBe(null);
+    expect(dateToFullYear(-2)).toBe(null);
   });
 
   it("should return a valid year", () => {
-    expect(toFullYear(testDate)).toBe(2020);
-    expect(toFullYear(testDate2)).toBe(2021);
+    expect(dateToFullYear(testDate)).toBe(2020);
+    expect(dateToFullYear(testDate2)).toBe(2021);
   });
 });
 
-describe("it should exist a toMonth function", () => {
+describe("it should exist a dateToMonth function", () => {
   it("should exist the method", () => {
-    expect(toMonth).not.toBeNull();
+    expect(dateToMonth).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toMonth()).toBe(null);
-    expect(toMonth(null)).toBe(null);
-    expect(toMonth("")).toBe(null);
+    expect(dateToMonth()).toBe(null);
+    expect(dateToMonth(null)).toBe(null);
+    expect(dateToMonth("")).toBe(null);
     expect(
-      toMonth({
+      dateToMonth({
         test: 1,
       })
     ).toBe(null);
-    expect(toMonth(2)).toBe(null);
-    expect(toMonth(-2)).toBe(null);
+    expect(dateToMonth(2)).toBe(null);
+    expect(dateToMonth(-2)).toBe(null);
   });
 
   it("should return a valid month", () => {
-    expect(toMonth(testDate)).toBe(12);
-    expect(toMonth(testDate, true)).toBe("12");
-    expect(toMonth(testDate2)).toBe(3);
-    expect(toMonth(testDate2, true)).toBe("03");
+    expect(dateToMonth(testDate)).toBe(12);
+    expect(dateToMonth(testDate, true)).toBe("12");
+    expect(dateToMonth(testDate2)).toBe(3);
+    expect(dateToMonth(testDate2, true)).toBe("03");
   });
 });
 
-describe("it should exist a toDay function", () => {
+describe("it should exist a dateToDay function", () => {
   it("should exist the method", () => {
-    expect(toDay).not.toBeNull();
+    expect(dateToDay).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toDay()).toBe(null);
-    expect(toDay(null)).toBe(null);
-    expect(toDay("")).toBe(null);
+    expect(dateToDay()).toBe(null);
+    expect(dateToDay(null)).toBe(null);
+    expect(dateToDay("")).toBe(null);
     expect(
-      toDay({
+      dateToDay({
         test: 1,
       })
     ).toBe(null);
-    expect(toDay(2)).toBe(null);
-    expect(toDay(-2)).toBe(null);
+    expect(dateToDay(2)).toBe(null);
+    expect(dateToDay(-2)).toBe(null);
   });
 
   it("should return a valid day", () => {
-    expect(toDay(testDate)).toBe(23);
-    expect(toDay(testDate, true)).toBe("23");
+    expect(dateToDay(testDate)).toBe(23);
+    expect(dateToDay(testDate, true)).toBe("23");
 
-    expect(toDay(testDate2)).toBe(1);
-    expect(toDay(testDate2, true)).toBe("01");
+    expect(dateToDay(testDate2)).toBe(1);
+    expect(dateToDay(testDate2, true)).toBe("01");
   });
 });
 
-describe("it should exist a toHours function", () => {
+describe("it should exist a dateToHours function", () => {
   it("should exist the method", () => {
-    expect(toHours).not.toBeNull();
+    expect(dateToHours).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toHours()).toBe(null);
-    expect(toHours(null)).toBe(null);
-    expect(toHours("")).toBe(null);
+    expect(dateToHours()).toBe(null);
+    expect(dateToHours(null)).toBe(null);
+    expect(dateToHours("")).toBe(null);
     expect(
-      toHours({
+      dateToHours({
         test: 1,
       })
     ).toBe(null);
-    expect(toHours(2)).toBe(null);
-    expect(toHours(-2)).toBe(null);
+    expect(dateToHours(2)).toBe(null);
+    expect(dateToHours(-2)).toBe(null);
   });
 
   it("should return a valid hours", () => {
-    expect(toHours(testDate)).toBe(18);
-    expect(toHours(testDate, true)).toBe("18");
+    expect(dateToHours(testDate)).toBe(18);
+    expect(dateToHours(testDate, true)).toBe("18");
 
-    expect(toHours(testDate2)).toBe(9);
-    expect(toHours(testDate2, true)).toBe("09");
+    expect(dateToHours(testDate2)).toBe(9);
+    expect(dateToHours(testDate2, true)).toBe("09");
   });
 });
 
-describe("it should exist a toMinutes function", () => {
+describe("it should exist a dateToMinutes function", () => {
   it("should exist the method", () => {
-    expect(toMinutes).not.toBeNull();
+    expect(dateToMinutes).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toMinutes()).toBe(null);
-    expect(toMinutes(null)).toBe(null);
-    expect(toMinutes("")).toBe(null);
+    expect(dateToMinutes()).toBe(null);
+    expect(dateToMinutes(null)).toBe(null);
+    expect(dateToMinutes("")).toBe(null);
     expect(
-      toMinutes({
+      dateToMinutes({
         test: 1,
       })
     ).toBe(null);
-    expect(toMinutes(2)).toBe(null);
-    expect(toMinutes(-2)).toBe(null);
+    expect(dateToMinutes(2)).toBe(null);
+    expect(dateToMinutes(-2)).toBe(null);
   });
 
   it("should return a valid hours", () => {
-    expect(toMinutes(testDate)).toBe(7);
-    expect(toMinutes(testDate, true)).toBe("07");
+    expect(dateToMinutes(testDate)).toBe(7);
+    expect(dateToMinutes(testDate, true)).toBe("07");
 
-    expect(toMinutes(testDate2)).toBe(5);
-    expect(toMinutes(testDate2, true)).toBe("05");
+    expect(dateToMinutes(testDate2)).toBe(5);
+    expect(dateToMinutes(testDate2, true)).toBe("05");
   });
 });
 
-describe("it should exist a toSeconds function", () => {
+describe("it should exist a dateToSeconds function", () => {
   it("should exist the method", () => {
-    expect(toSeconds).not.toBeNull();
+    expect(dateToSeconds).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toSeconds()).toBe(null);
-    expect(toSeconds(null)).toBe(null);
-    expect(toSeconds("")).toBe(null);
+    expect(dateToSeconds()).toBe(null);
+    expect(dateToSeconds(null)).toBe(null);
+    expect(dateToSeconds("")).toBe(null);
     expect(
-      toSeconds({
+      dateToSeconds({
         test: 1,
       })
     ).toBe(null);
-    expect(toSeconds(2)).toBe(null);
-    expect(toSeconds(-2)).toBe(null);
+    expect(dateToSeconds(2)).toBe(null);
+    expect(dateToSeconds(-2)).toBe(null);
   });
 
   it("should return a valid hours", () => {
-    expect(toSeconds(testDate)).toBe(45);
-    expect(toSeconds(testDate, true)).toBe("45");
+    expect(dateToSeconds(testDate)).toBe(45);
+    expect(dateToSeconds(testDate, true)).toBe("45");
 
-    expect(toSeconds(testDate2)).toBe(9);
-    expect(toSeconds(testDate2, true)).toBe("09");
+    expect(dateToSeconds(testDate2)).toBe(9);
+    expect(dateToSeconds(testDate2, true)).toBe("09");
   });
 });
 
-describe("it should exist a toFormat function", () => {
+describe("it should exist a dateToFormat function", () => {
   it("should exist the method", () => {
-    expect(toFormat).not.toBeNull();
+    expect(dateToFormat).not.toBeNull();
   });
 
   it("should return a null", () => {
-    expect(toFormat()).toBe(null);
-    expect(toFormat(null)).toBe(null);
-    expect(toFormat("")).toBe(null);
+    expect(dateToFormat()).toBe(null);
+    expect(dateToFormat(null)).toBe(null);
+    expect(dateToFormat("")).toBe(null);
     expect(
-      toFormat({
+      dateToFormat({
         test: 1,
       })
     ).toBe(null);
-    expect(toFormat(2)).toBe(null);
-    expect(toFormat(-2)).toBe(null);
+    expect(dateToFormat(2)).toBe(null);
+    expect(dateToFormat(-2)).toBe(null);
   });
 
   it("should return a valid formatted date", () => {
-    expect(toFormat(testDate)).toBe("2020-12-23T18:07:45+01:00");
-    expect(toFormat(testDate, "yyyy-MM-DDTHH:mm:ssZ")).toBe(
+    expect(dateToFormat(testDate)).toBe("2020-12-23T18:07:45+01:00");
+    expect(dateToFormat(testDate, "yyyy-MM-DDTHH:mm:ssZ")).toBe(
       "2020-12-23T18:07:45+01:00"
     );
-    expect(toFormat(testDate, "ddd MMM DD yyyy HH:mm:ss")).toBe(
+    expect(dateToFormat(testDate, "ddd MMM DD yyyy HH:mm:ss")).toBe(
       "Wed Dec 23 2020 18:07:45"
     );
-    expect(toFormat(testDate, "DD/MM/yyyy")).toBe("23/12/2020");
-    expect(toFormat(testDate, null, true)).toBe("2020-12-23T17:07:45Z");
+    expect(dateToFormat(testDate, "DD/MM/yyyy")).toBe("23/12/2020");
+    expect(dateToFormat(testDate, null, true)).toBe("2020-12-23T17:07:45Z");
   });
 });
