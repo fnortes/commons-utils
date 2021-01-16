@@ -1,6 +1,6 @@
 {
   "name": "@fnortes/commons-utils",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "General commons utils",
   "main": "dist/index.umd.js",
   "module": "dist/index.module.js",
@@ -57,8 +57,6 @@
   },
   "files": [
     "dist",
-    "index.d.ts",
-    "index.js.flow",
     "package.json",
     "README.md"
   ],
