@@ -1,0 +1,31 @@
+For Developers:
+
+yarn test           --> Run all tests with coverage.
+yarn copy           --> Copy all no code files to dist folder (README.md, LICENSE and package.json).
+yarn build          --> Build package and generate all content inside dist folder.
+yarn format         --> Use Prettier to format all typescript files inside src folder.
+yarn lint           --> Run typescript linter.
+yarn prepare        --> Automate script. Used to run build script only. It will run:
+                          - Before the package is packed and published.
+                          - When local yarn/npm install is executed.
+yarn prepublishOnly --> Automate script. Used to run test and lint scripts. It will run:
+                          - Before prepare script.
+                          - When yarn/npm publish is executed.
+yarn preversion     --> Automate script. Used to run lint script only. It will run:
+                          - Before a new package version is added.
+yarn version        --> Automate script. Used to run format script and add new src files to commit. It will run:
+                          - After a new version has been loaded. A commit and a new version-tag will be made 
+                          every time you bump a new version. This command will run BEFORE the commit is made.
+yarn postversion    -->  Automate script. Used to push commit and tag. It will run:
+                          - After the commit, for a new version, has been made.
+yarn prepublish     --> Automate script. Used to run build script only. It will run:
+                          - Before run publish.
+yarn login          --> Configure an NPM account to publish.
+yarn publish        --> Publish a new version in NPM:
+                          - A new version is requested and it is updated automatically into package.json.
+                          - The package will first be built by the prepare script, then test and lint will run 
+                          by the prepublishOnly script before the package is published.
+                          - The new commit and tag is automatically pushed to git.
+yarn version patch  --> Launch a new patch version of the package:
+                          - Our preversion, version, and postversion will run, create a new tag in git and push it 
+                          to our remote repository.
