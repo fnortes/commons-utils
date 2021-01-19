@@ -1,7 +1,35 @@
-import { stringToDate, stringToLocaleDateString, stringToFullYear, stringToMonth, stringToDay, stringToHours, stringToMinutes, stringToSeconds, stringToFormat } from "./string";
-import { timestampToDate, timestampToLocaleDateString, timestampToFullYear, timestampToMonth, timestampToDay, timestampToHours, timestampToMinutes, timestampToSeconds, timestampToFormat } from "./timestamp";
-import { dateToFullYear, dateToMonth, dateToDay, dateToHours, dateToMinutes, dateToSeconds, dateToFormat } from "./date";
-import { dateIsValid } from "../validations/date";
+import {
+  stringToDate,
+  stringToLocaleDateString,
+  stringToFullYear,
+  stringToMonth,
+  stringToDay,
+  stringToHours,
+  stringToMinutes,
+  stringToSeconds,
+  stringToFormat,
+} from './string';
+import {
+  timestampToDate,
+  timestampToLocaleDateString,
+  timestampToFullYear,
+  timestampToMonth,
+  timestampToDay,
+  timestampToHours,
+  timestampToMinutes,
+  timestampToSeconds,
+  timestampToFormat,
+} from './timestamp';
+import {
+  dateToFullYear,
+  dateToMonth,
+  dateToDay,
+  dateToHours,
+  dateToMinutes,
+  dateToSeconds,
+  dateToFormat,
+} from './date';
+import { dateIsValid } from '../validations/date';
 
 /**
  * Get the Date object from a date value (String or timestamp Number).
@@ -13,9 +41,9 @@ import { dateIsValid } from "../validations/date";
  */
 export const toDate = (dateValue: string | number, mask?: string): Date | null => {
   switch (typeof dateValue) {
-    case "string":
+    case 'string':
       return mask ? stringToDate(dateValue, mask) : null;
-    case "number":
+    case 'number':
       return timestampToDate(dateValue);
     default:
       return null;
@@ -32,11 +60,11 @@ export const toDate = (dateValue: string | number, mask?: string): Date | null =
  */
 export const toLocaleDateString = (dateValue: Date | string | number, mask?: string): string | null => {
   switch (typeof dateValue) {
-    case "string":
+    case 'string':
       return mask ? stringToLocaleDateString(dateValue, mask) : null;
-    case "number":
+    case 'number':
       return timestampToLocaleDateString(dateValue);
-    case "object":
+    case 'object':
       return dateIsValid(dateValue) ? dateValue.toLocaleDateString() : null;
     default:
       return null;
@@ -53,11 +81,11 @@ export const toLocaleDateString = (dateValue: Date | string | number, mask?: str
  */
 export const toFullYear = (dateValue: Date | string | number, mask?: string): number | null => {
   switch (typeof dateValue) {
-    case "string":
+    case 'string':
       return mask ? stringToFullYear(dateValue, mask) : null;
-    case "number":
+    case 'number':
       return timestampToFullYear(dateValue);
-    case "object":
+    case 'object':
       return dateToFullYear(dateValue);
     default:
       return null;
@@ -73,13 +101,17 @@ export const toFullYear = (dateValue: Date | string | number, mask?: string): nu
  *             More information in https://momentjs.com/docs/#/displaying/
  * @returns Is the month number obtained (as string if it is prefixed).
  */
-export const toMonth = (dateValue: Date | string | number, prefixZero: boolean = false, mask?: string): string | number | null => {
+export const toMonth = (
+  dateValue: Date | string | number,
+  prefixZero: boolean = false,
+  mask?: string,
+): string | number | null => {
   switch (typeof dateValue) {
-    case "string":
+    case 'string':
       return mask ? stringToMonth(dateValue, mask, prefixZero) : null;
-    case "number":
+    case 'number':
       return timestampToMonth(dateValue, prefixZero);
-    case "object":
+    case 'object':
       return dateToMonth(dateValue, prefixZero);
     default:
       return null;
@@ -95,13 +127,17 @@ export const toMonth = (dateValue: Date | string | number, prefixZero: boolean =
  *             More information in https://momentjs.com/docs/#/displaying/
  * @returns Is the day number obtained (as string if it is prefixed).
  */
-export const toDay = (dateValue: Date | string | number, prefixZero: boolean = false, mask?: string): string | number | null => {
+export const toDay = (
+  dateValue: Date | string | number,
+  prefixZero: boolean = false,
+  mask?: string,
+): string | number | null => {
   switch (typeof dateValue) {
-    case "string":
+    case 'string':
       return mask ? stringToDay(dateValue, mask, prefixZero) : null;
-    case "number":
+    case 'number':
       return timestampToDay(dateValue, prefixZero);
-    case "object":
+    case 'object':
       return dateToDay(dateValue, prefixZero);
     default:
       return null;
@@ -117,13 +153,17 @@ export const toDay = (dateValue: Date | string | number, prefixZero: boolean = f
  *             More information in https://momentjs.com/docs/#/displaying/
  * @returns Is the hours number obtained (as string if it is prefixed).
  */
-export const toHours = (dateValue: Date | string | number, prefixZero: boolean = false, mask?: string): string | number | null => {
+export const toHours = (
+  dateValue: Date | string | number,
+  prefixZero: boolean = false,
+  mask?: string,
+): string | number | null => {
   switch (typeof dateValue) {
-    case "string":
+    case 'string':
       return mask ? stringToHours(dateValue, mask, prefixZero) : null;
-    case "number":
+    case 'number':
       return timestampToHours(dateValue, prefixZero);
-    case "object":
+    case 'object':
       return dateToHours(dateValue, prefixZero);
     default:
       return null;
@@ -139,13 +179,17 @@ export const toHours = (dateValue: Date | string | number, prefixZero: boolean =
  *             More information in https://momentjs.com/docs/#/displaying/
  * @returns Is the minutes number obtained (as string if it is prefixed).
  */
-export const toMinutes = (dateValue: Date | string | number, prefixZero: boolean = false, mask?: string): string | number | null => {
+export const toMinutes = (
+  dateValue: Date | string | number,
+  prefixZero: boolean = false,
+  mask?: string,
+): string | number | null => {
   switch (typeof dateValue) {
-    case "string":
+    case 'string':
       return mask ? stringToMinutes(dateValue, mask, prefixZero) : null;
-    case "number":
+    case 'number':
       return timestampToMinutes(dateValue, prefixZero);
-    case "object":
+    case 'object':
       return dateToMinutes(dateValue, prefixZero);
     default:
       return null;
@@ -161,13 +205,17 @@ export const toMinutes = (dateValue: Date | string | number, prefixZero: boolean
  *             More information in https://momentjs.com/docs/#/displaying/
  * @returns Is the seconds number obtained (as string if it is prefixed).
  */
-export const toSeconds = (dateValue: Date | string | number, prefixZero: boolean = false, mask?: string): string | number | null => {
+export const toSeconds = (
+  dateValue: Date | string | number,
+  prefixZero: boolean = false,
+  mask?: string,
+): string | number | null => {
   switch (typeof dateValue) {
-    case "string":
+    case 'string':
       return mask ? stringToSeconds(dateValue, mask, prefixZero) : null;
-    case "number":
+    case 'number':
       return timestampToSeconds(dateValue, prefixZero);
-    case "object":
+    case 'object':
       return dateToSeconds(dateValue, prefixZero);
     default:
       return null;
@@ -184,13 +232,18 @@ export const toSeconds = (dateValue: Date | string | number, prefixZero: boolean
  *             More information in https://momentjs.com/docs/#/displaying/
  * @returns The string of formatted date.
  */
-export const toFormat = (dateValue: Date | string | number, maskToConvert?: string | null, utc: boolean = false, mask?: string): string | null => {
+export const toFormat = (
+  dateValue: Date | string | number,
+  maskToConvert?: string | null,
+  utc: boolean = false,
+  mask?: string,
+): string | null => {
   switch (typeof dateValue) {
-    case "string":
+    case 'string':
       return mask ? stringToFormat(dateValue, mask, maskToConvert, utc) : null;
-    case "number":
+    case 'number':
       return timestampToFormat(dateValue, maskToConvert, utc);
-    case "object":
+    case 'object':
       return dateToFormat(dateValue, maskToConvert, utc);
     default:
       return null;

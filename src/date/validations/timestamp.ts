@@ -1,4 +1,4 @@
-import moment from "moment";
+import moment from 'moment';
 
 /**
  * Check if the timestamp has a valid format.
@@ -8,11 +8,7 @@ import moment from "moment";
 export const timestampIsCorrect = (value: any): boolean => {
   const parsed: number = parseFloat(value);
 
-  return (
-    !Number.isNaN(parsed) &&
-    Number.isFinite(parsed) &&
-    /^\d+\.?\d+$/.test(value)
-  );
+  return !Number.isNaN(parsed) && Number.isFinite(parsed) && /^\d+\.?\d+$/.test(value);
 };
 
 /**

@@ -1,4 +1,4 @@
-import { isNotEmpty } from "../../text/validations/text";
+import { isNotEmpty } from '../../text/validations/text';
 
 /**
  * Check if the jsonString param is a valid JSON object.
@@ -6,7 +6,7 @@ import { isNotEmpty } from "../../text/validations/text";
  * @returns True if the jsonString is valid. Else false.
  */
 export const stringIsValidJson = (jsonString: string): boolean => {
-  if (isNotEmpty(jsonString) && typeof jsonString === "string") {
+  if (isNotEmpty(jsonString) && typeof jsonString === 'string') {
     try {
       return isNotEmpty(JSON.parse(jsonString));
     } catch (error) {

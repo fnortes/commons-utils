@@ -8,7 +8,7 @@ export const isIe = (): boolean => {
   const oldIe: number = ua.indexOf('MSIE ');
   const newIe: number = ua.indexOf('Trident/');
 
-  return ((oldIe > -1) || (newIe > -1));
+  return oldIe > -1 || newIe > -1;
 };
 
 /**

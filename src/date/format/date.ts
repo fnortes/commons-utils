@@ -1,20 +1,22 @@
-import moment from "moment";
-import { dateIsValid } from "../validations/date";
-import { leftPad } from "../../text/format/text";
+import moment from 'moment';
+import { dateIsValid } from '../validations/date';
+import { leftPad } from '../../text/format/text';
 
 /**
  * Get the timestamp value from a Date.
  * @param dateToConvert Is the date from which to obtain the timestamp.
  * @returns Is the timestamp value or null if the date is not valid.
  */
-export const dateToTimestamp = (dateToConvert: Date | null): number | null => dateIsValid(dateToConvert) ? parseFloat(moment(dateToConvert).format("x")) : null;
+export const dateToTimestamp = (dateToConvert: Date | null): number | null =>
+  dateIsValid(dateToConvert) ? parseFloat(moment(dateToConvert).format('x')) : null;
 
 /**
  * Get the full year number from a Date object.
  * @param dateToConvert Is the Date object from which to obtain the full year number.
  * @returns Is the full year number obtained.
  */
-export const dateToFullYear = (dateToConvert: Date | null): number | null => dateToConvert !== null && dateIsValid(dateToConvert) ? dateToConvert.getFullYear() : null;
+export const dateToFullYear = (dateToConvert: Date | null): number | null =>
+  dateToConvert !== null && dateIsValid(dateToConvert) ? dateToConvert.getFullYear() : null;
 
 /**
  * Get the month number from a Date object.

@@ -1,9 +1,9 @@
 import { isEdge } from './../../browser';
-import { xmlPretty } from "../../file/format/xml";
-import { jsonPretty } from "../../file/format/json";
-import { isBase64Encoded, isNotBlankString, isNotEmpty, isNotNull } from "../validations/text";
+import { xmlPretty } from '../../file/format/xml';
+import { jsonPretty } from '../../file/format/json';
+import { isBase64Encoded, isNotBlankString, isNotEmpty, isNotNull } from '../validations/text';
 
-const TYPES_CONTENT: string[] = ["string", "xml", "json"];
+const TYPES_CONTENT: string[] = ['string', 'xml', 'json'];
 
 /**
  * Left fill a string or number, up to the length.
@@ -12,9 +12,9 @@ const TYPES_CONTENT: string[] = ["string", "xml", "json"];
  * @param char Es the char used to fill the pad.
  * @returns Is the formatted string.
  */
-export const leftPad = (pad: string | number | null, length: number = 2, char: string = "0"): string | null => {
+export const leftPad = (pad: string | number | null, length: number = 2, char: string = '0'): string | null => {
   if (isNotNull(pad)) {
-    pad = pad + "";
+    pad = pad + '';
 
     return pad.length >= length ? pad : new Array(length - pad.length + 1).join(char) + pad;
   }
@@ -28,7 +28,7 @@ export const leftPad = (pad: string | number | null, length: number = 2, char: s
  * @param typeContent One of ["string", "xml", "json"]. "string by default".
  * @returns Is the formatted string.
  */
-export const pretty = (data: string = "", typeContent: string = TYPES_CONTENT[0]): string | null => {
+export const pretty = (data: string = '', typeContent: string = TYPES_CONTENT[0]): string | null => {
   switch (typeContent) {
     case TYPES_CONTENT[1]:
       return xmlPretty(data);
@@ -45,7 +45,7 @@ export const pretty = (data: string = "", typeContent: string = TYPES_CONTENT[0]
  * @param typeContent One of ["string", "xml", "json"]. "string by default".
  */
 export const copyToClipboard = (data: string, typeContent: string = TYPES_CONTENT[0]): void => {
-  const textarea: HTMLTextAreaElement = document.createElement("textarea");
+  const textarea: HTMLTextAreaElement = document.createElement('textarea');
   const selection: Selection | null = document.getSelection();
   const range: Range = document.createRange();
 
@@ -64,7 +64,7 @@ export const copyToClipboard = (data: string, typeContent: string = TYPES_CONTEN
     }
   }
 
-  document.execCommand("copy");
+  document.execCommand('copy');
 
   if (!edge && selection !== null) {
     selection.removeAllRanges();
@@ -83,7 +83,7 @@ export const ellipsis = (data: string | null, maxLength: number = 40): string | 
   if (isNotNull(data) && data !== null) {
     const newContent: string = data.substr(0, maxLength);
 
-    return newContent + (data.length > maxLength ? " ..." : "");
+    return newContent + (data.length > maxLength ? ' ...' : '');
   }
 
   return null;
@@ -122,14 +122,16 @@ export const encodeToBase64 = (data: string): string | null => {
  */
 export const toCamelCase = (data: string): string | null => {
   if (isNotBlankString(data)) {
-    return data.split("_").map((word, index) => {
-      if (index === 0) {
-        return word.toLowerCase();
-      }
+    return data
+      .split('_')
+      .map((word, index) => {
+        if (index === 0) {
+          return word.toLowerCase();
+        }
 
-      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-    })
-      .join("");
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      })
+      .join('');
   }
 
   return null;

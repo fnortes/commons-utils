@@ -1,4 +1,4 @@
-import { isValidXml } from "../validations/common";
+import { isValidXml } from '../validations/common';
 
 /**
  * Convert a data xml string entry into a pretty string.
@@ -6,10 +6,10 @@ import { isValidXml } from "../validations/common";
  * @param originalTab Is the string to use for the indentation, by default it is the tab.
  * @returns Is the pretty formatted string.
  */
-export const xmlPretty = (data: string, originalTab: string = "\t"): string | null => {
+export const xmlPretty = (data: string, originalTab: string = '\t'): string | null => {
   if (isValidXml(data)) {
-    let formatted: string = "";
-    let indent: string = "";
+    let formatted: string = '';
+    let indent: string = '';
 
     data.split(/>\s*</).forEach((node: string) => {
       if (node.match(/^\/\w/)) {

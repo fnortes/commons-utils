@@ -1,12 +1,21 @@
-import { timestampIsCorrect } from "../validations/timestamp";
-import { dateToFullYear, dateToMonth, dateToDay, dateToHours, dateToMinutes, dateToSeconds, dateToFormat } from "./date";
+import { timestampIsCorrect } from '../validations/timestamp';
+import {
+  dateToFullYear,
+  dateToMonth,
+  dateToDay,
+  dateToHours,
+  dateToMinutes,
+  dateToSeconds,
+  dateToFormat,
+} from './date';
 
 /**
  * Get the Date object from a timestamp value.
  * @param timestampValue Is the timestamp value from which to obtain the Date object.
  * @returns Is the Date object obtained or null if the timestamp is not valid.
  */
-export const timestampToDate = (timestampValue: any): Date | null => timestampIsCorrect(timestampValue) ? new Date(timestampValue) : null;
+export const timestampToDate = (timestampValue: any): Date | null =>
+  timestampIsCorrect(timestampValue) ? new Date(timestampValue) : null;
 
 /**
  * Returns a string with a client language sensitive representation of the date, from a timestamp.
